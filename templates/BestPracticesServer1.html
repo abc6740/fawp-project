@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Your Soil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f8f4;
+      position: relative;
+    }
+
+    /* Language selector at top-right */
+    .lang-select {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 8px 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .card h3 {
+      padding: 10px;
+      color: #1b5e20;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Language Selector -->
+<select class="lang-select" onchange="switchLanguage(this.value)">
+  <option value="en">English</option>
+  <option value="hi">हिंदी</option>
+  <option value="te">తెలుగు</option>
+</select>
+
+<header>
+  <h1 id="page-title">🌱 Select Your Soil Which You Are Farming</h1>
+  <p id="page-subtext">Click on your soil type to know more</p>
+</header>
+
+<div class="container">
+  <div class="cards">
+    <div class="card" onclick="openSoilPage('black')">
+      <img src="blacksoil.jpg" alt="Black Soil">
+      <h3 id="soil-black">Black Soil</h3>
+    </div>
+
+    <div class="card" onclick="openSoilPage('red')">
+      <img src="redsoil.jpeg" alt="Red Soil">
+      <h3 id="soil-red">Red Soil</h3>
+    </div>
+
+    <div class="card" onclick="openSoilPage('alluvial')">
+      <img src="alluvial-soil.jpeg" alt="Alluvial Soil">
+      <h3 id="soil-alluvial">Alluvial Soil</h3>
+    </div>
+
+    <div class="card" onclick="openSoilPage('sandy')">
+      <img src="sandysoil.jpeg" alt="Sandy Soil">
+      <h3 id="soil-sandy">Sandy Soil</h3>
+    </div>
+
+    <div class="card" onclick="openSoilPage('clay')">
+      <img src="claysoil.jpeg" alt="Clay Soil">
+      <h3 id="soil-clay">Clay Soil</h3>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentLang = "en";
+
+  // Soil names and page text in 3 languages
+  const texts = {
+    en: {
+      title: "🌱 Select Your Soil Which You Are Farming",
+      subtext: "Click on your soil type to know more",
+      black: "Black Soil",
+      red: "Red Soil",
+      alluvial: "Alluvial Soil",
+      sandy: "Sandy Soil",
+      clay: "Clay Soil"
+    },
+    hi: {
+      title: "🌱 अपनी खेती के लिए मिट्टी चुनें",
+      subtext: "अधिक जानकारी के लिए अपनी मिट्टी का प्रकार क्लिक करें",
+      black: "काली मिट्टी",
+      red: "लाल मिट्टी",
+      alluvial: "उपजाऊ मिट्टी",
+      sandy: "रेतीली मिट्टी",
+      clay: "चिकनी मिट्टी"
+    },
+    te: {
+      title: "🌱 మీరు పంటల కోసం నేలను ఎంచుకోండి",
+      subtext: "మరింత తెలుసుకోవడానికి మీ నేల రకాన్ని క్లిక్ చేయండి",
+      black: "కాళి మట్టి",
+      red: "ఎరుపు మట్టి",
+      alluvial: "ఉపజావు మట్టి",
+      sandy: "మానవ మట్టి",
+      clay: "చిక్కటి మట్టి"
+    }
+  };
+
+  const langSelect = document.querySelector('.lang-select');
+
+  // Load saved language or default to English
+  const savedLang = localStorage.getItem('language') || 'en';
+  langSelect.value = savedLang;
+  switchLanguage(savedLang);
+
+  // Save language when changed
+  langSelect.addEventListener('change', () => {
+    const selectedLang = langSelect.value;
+    localStorage.setItem('language', selectedLang);
+    switchLanguage(selectedLang);
+  });
+
+  function switchLanguage(lang) {
+    document.getElementById('page-title').innerText = texts[lang].title;
+    document.getElementById('page-subtext').innerText = texts[lang].subtext;
+    document.getElementById('soil-black').innerText = texts[lang].black;
+    document.getElementById('soil-red').innerText = texts[lang].red;
+    document.getElementById('soil-alluvial').innerText = texts[lang].alluvial;
+    document.getElementById('soil-sandy').innerText = texts[lang].sandy;
+    document.getElementById('soil-clay').innerText = texts[lang].clay;
+  }
+
+  // Open soil-specific pages (replace with actual page names)
+  function openSoilPage(type) {
+    if(type === 'black') window.location.href = "soil.html";
+    if(type === 'red') window.location.href = "redsoil.html";
+    if(type === 'alluvial') window.location.href = "alluvialsoil.html";
+    if(type === 'sandy') window.location.href = "sandysoil.html";
+    if(type === 'clay') window.location.href = "claysoil.html";
+  }
+</script>
+
+</body>
+</html>
