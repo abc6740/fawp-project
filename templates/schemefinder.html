@@ -8,10 +8,7 @@
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #4facfe, #00f2fe);
       margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 20px;
     }
 
     .container {
@@ -19,179 +16,84 @@
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      text-align: center;
-      width: 300px;
-    }
-    .category-container {
-  display: flex;
-  flex-wrap: wrap;        /* allows wrapping if screen is small */
-  gap: 20px;              /* space between items */
-  justify-content: center; /* center alignment */
-}
-
-.category-container label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-    h2 {
-      margin-bottom: 20px;
+      max-width: 600px;
+      margin: auto;
     }
 
     input {
       width: 90%;
       padding: 10px;
       margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
     }
 
     button {
-      background: #4facfe;
-      color: white;
-      border: none;
       padding: 10px 20px;
-      border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
     }
 
-    button:hover {
-      background: #007bff;
+    .scheme {
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
     }
 
-    ul {
-      text-align: left;
-      margin-top: 15px;
-    }
-    
-
-    li {
-      background: #f1f1f1;
-      padding: 8px;
-      margin: 5px 0;
-      border-radius: 5px;
-    }
+    .eligible { background: #e8f5e9; }
+    .not-eligible { background: #ffebee; }
   </style>
-
 </head>
 
 <body>
 
-  <div class="container">
-    <h2>Government Scheme Finder</h2>
+<div class="container">
+  <h2>Scheme Finder</h2>
 
-    <input type="text" id="name" placeholder="Enter your name">
-    <input type="number" id="age" placeholder="Enter your age">
-<h4>Select Category:</h4>
+  <input type="number" id="farmerId" placeholder="Enter Farmer ID">
+  <button onclick="findSchemes()">Find Schemes</button>
 
-<div class="category-container">
-  <label><input type="checkbox" value="pregnant"> Pregnant</label>
-  <label><input type="checkbox" value="farmer"> Farmer</label>
-  <label><input type="checkbox" value="marriage"> Marriage</label>
-  <label><input type="checkbox" value="pension"> Pension</label>
-  <label><input type="checkbox" value="loans"> Loans</label>
-  <label><input type="checkbox" value="subsidy"> Subsidies</label>
+  <div id="results"></div>
 </div>
 
-    <button onclick="findSchemes()">Find Schemes</button>
+<script>
 
-    <h3>Eligible Schemes:</h3>
-    <ul id="result"></ul>
-  </div>
+function findSchemes(){
+  const farmerId = document.getElementById("farmerId").value;
 
-  <script>
-const schemes = [
-  // 👵 Pension
-  { scheme_name: "Old Age Pension (Central/State Support)", min_age: 60, max_age: 120, category: "pension", url: "https://aasara.telangana.gov.in/" },
-
-  // 🚜 Farmer (Central)
-  { scheme_name: "PM Kisan Yojana", min_age: 18, max_age: 60, category: "farmer", url: "https://pmkisan.gov.in/" },
-
-  // 🚜 Farmer (Telangana)
-  { scheme_name: "Rythu Bandhu (Telangana)", min_age: 18, max_age: 70, category: "farmer", url: "https://rythubandhu.telangana.gov.in/" },
-
-  // 💍 Marriage (Telangana)
-  { scheme_name: "Kalyana Lakshmi", min_age: 18, max_age: 35, category: "marriage", url: "https://telangana.gov.in/" },
-  { scheme_name: "Shaadi Mubarak", min_age: 18, max_age: 40, category: "marriage", url: "https://telangana.gov.in/" },
-
-  // 🤰 Pregnant (Central)
-  { scheme_name: "PM Matru Vandana Yojana", min_age: 18, max_age: 45, category: "pregnant", url: "https://pmmvy.wcd.gov.in/" },
-
-  // 🤰 Pregnant (Telangana)
-  { scheme_name: "KCR Kit Scheme", min_age: 0, max_age: 50, category: "pregnant", url: "https://telangana.gov.in/" },
-
-  // 💰 Loans (Central)
-  { scheme_name: "PM Mudra Loan", min_age: 18, max_age: 60, category: "loans", url: "https://www.mudra.org.in/" },
-  { scheme_name: "Stand Up India Loan", min_age: 18, max_age: 60, category: "loans", url: "https://www.standupmitra.in/" },
-
-  // 🏷️ Subsidies (Central)
-  { scheme_name: "PM Awas Yojana (Housing Subsidy)", min_age: 18, max_age: 70, category: "subsidy", url: "https://pmaymis.gov.in/" },
-
-  // 🏷️ Subsidies (Telangana)
-  { scheme_name: "Rythu Bandhu Support", min_age: 18, max_age: 70, category: "subsidy", url: "https://rythubandhu.telangana.gov.in/" },
-
-  // 🎓 General Central
-  { scheme_name: "National Scholarship Portal", min_age: 5, max_age: 25, category: "subsidy", url: "https://scholarships.gov.in/" },
-
-  // 🏥 Health (Central)
-  { scheme_name: "Ayushman Bharat Scheme", min_age: 0, max_age: 120, category: "subsidy", url: "https://pmjay.gov.in/" }
-];
-
-function findSchemes() {
-  const name = document.getElementById("name").value.trim();
-const age = parseInt(document.getElementById("age").value);
-  const resultList = document.getElementById("result");
-
-  resultList.innerHTML = "";
-
-  // Validation
-  if (name === "" || age === "") {
-    const li = document.createElement("li");
-    li.textContent = "⚠️ Please fill both Name and Age";
-    li.style.color = "red";
-    resultList.appendChild(li);
+  if(!farmerId){
+    alert("Enter Farmer ID");
     return;
   }
 
-  // Get selected categories
-  const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
-  const selectedCategories = Array.from(checkedBoxes).map(cb => cb.value);
+  fetch(`https://your-app.onrender.com/api/match/${farmerId}`)
+    .then(res => res.json())
+    .then(data => {
 
-  let found = false;
+      let html = "<h3>✅ Eligible Schemes</h3>";
 
-  schemes.forEach(scheme => {
-    const ageMatch = age >= scheme.min_age && age <= scheme.max_age;
+      data.eligible.forEach(s => {
+        html += `<div class="scheme eligible">
+          ${s.scheme_name} <br>
+          <small>${s.reason}</small>
+        </div>`;
+      });
 
-    // ✅ KEY FIX:
-    const categoryMatch =
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(scheme.category);
+      html += "<h3>❌ Not Eligible</h3>";
 
-    if (ageMatch && categoryMatch) {
-      const li = document.createElement("li");
+      data.not_eligible.forEach(s => {
+        html += `<div class="scheme not-eligible">
+          ${s.scheme_name} <br>
+          <small>${s.reason}</small>
+        </div>`;
+      });
 
-      const link = document.createElement("a");
-      link.href = scheme.url;
-      link.textContent = scheme.scheme_name;
-      link.target = "_blank";
-
-      li.appendChild(link);
-      resultList.appendChild(li);
-
-      found = true;
-    }
-  });
-
-  if (!found) {
-    const li = document.createElement("li");
-    li.textContent = "No schemes match your selected category and age";
-    resultList.appendChild(li);
-  }
+      document.getElementById("results").innerHTML = html;
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Error connecting to backend");
+    });
 }
-  </script>
+
+</script>
 
 </body>
 </html>
