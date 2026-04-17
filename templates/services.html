@@ -265,7 +265,22 @@ function openWeatherPage(){ window.location.href="weather.html"; }
 function openServerPage(){ window.location.href="BestPracticesServer1.html"; }
 function openMarketPage(){ window.location.href="marketprices.html"; }
 function openSchemesPage(){ window.location.href="schemes.html"; }
-function openSchemesFindePage(){ window.location.href="schemefinder.html"; }
+function openSchemesFindePage(){
+    // Example farmer ID (change later dynamically)
+    const farmerId = 1;
+
+    fetch(`https://fawp-project.onrender.com/api/match/${farmerId}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            localStorage.setItem("schemeData", JSON.stringify(data));
+            window.location.href = "schemefinder.html";
+        })
+        .catch(err => {
+            console.error("Error:", err);
+            alert("Backend not working");
+        });
+}
 </script>
 
 </body>
