@@ -9,6 +9,14 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+# ✅ Root route (ADD HERE)
+@app.route("/")
+def home():
+    return jsonify({
+        "status": "running",
+        "message": "FAWP backend is live 🚀"
+    })
+
 # ──────────────────────────────────────────────
 # Database setup
 # ──────────────────────────────────────────────
@@ -35,7 +43,7 @@ def execute(sql, params=()):
 
 
 # ──────────────────────────────────────────────
-# FARMERS
+# FARMERS API
 # ──────────────────────────────────────────────
 
 @app.route("/api/farmers", methods=["GET"])
@@ -210,7 +218,6 @@ def is_eligible(farmer, scheme):
 # ──────────────────────────────────────────────
 # ENTRY POINT (RENDER SAFE)
 # ──────────────────────────────────────────────
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
