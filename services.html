@@ -268,8 +268,7 @@ function openSchemesPage(){ window.location.href="schemes.html"; }
 function openSchemesFindePage(){
     // Example farmer ID (change later dynamically)
     const farmerId = 1;
-
-    fetch(`https://your-backend.onrender.com/api/match/${farmerId}`)
+fetch(`https://fawp-project.onrender.com/api/match/${farmerId}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
