@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scheme Finder Results</title>
+</head>
+
+<body>
+
+<h1>Scheme Results</h1>
+
+<div id="results"></div>
+
+<script>
+fetch("https://fawp-project.onrender.com/api/match/1")
+.then(res => res.json())
+.then(data => {
+
+    let html = "<h2>Eligible Schemes</h2>";
+
+    data.eligible.forEach(s => {
+        html += `<p>✅ ${s.scheme_name} - ${s.reason}</p>`;
+    });
+
+    html += "<h2>Not Eligible</h2>";
+
+    data.not_eligible.forEach(s => {
+        html += `<p>❌ ${s.scheme_name} - ${s.reason}</p>`;
+    });
+
+    document.getElementById("results").innerHTML = html;
+
+})
+.catch(err => {
+    document.getElementById("results").innerHTML = "❌ Backend not working";
+});
+</script>
+
+</body>
+</html>
