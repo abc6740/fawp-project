@@ -350,9 +350,15 @@ def stats():
     })
 
 
+app = Flask(__name__)
+CORS(app)
+
+from database import init_db, seed_db
+init_db()
+seed_db()
+
+# ... all your routes ...
+
 if __name__ == "__main__":
-    from database import init_db, seed_db
-    init_db()
-    seed_db()
     print("FAWP backend running on http://localhost:5000")
     app.run(debug=True, port=5000)
