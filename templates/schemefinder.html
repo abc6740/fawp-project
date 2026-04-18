@@ -1,9 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scheme Finder Results</title>
+</head>
+
+<body>
+
+<h1>Scheme Results</h1>
+
 <div id="results"></div>
 
 <script>
-const data = JSON.parse(localStorage.getItem("schemeData"));
+fetch("https://fawp-project.onrender.com/api/match/1")
+.then(res => res.json())
+.then(data => {
 
-if(data){
     let html = "<h2>Eligible Schemes</h2>";
 
     data.eligible.forEach(s => {
@@ -17,5 +28,12 @@ if(data){
     });
 
     document.getElementById("results").innerHTML = html;
-}
+
+})
+.catch(err => {
+    document.getElementById("results").innerHTML = "❌ Backend not working";
+});
 </script>
+
+</body>
+</html>
