@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Farmer Welfare Schemes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #eef7ee;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #1b5e20;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  color: #2e7d32;
+  margin-top: 40px;
+}
+
+.scheme {
+  background: #ffffff;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.scheme h3 {
+  color: #1b5e20;
+}
+
+.scheme p {
+  color: #333;
+}
+
+a.btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #2e7d32;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+a.btn:hover {
+  background: #1b5e20;
+}
+
+[data-lang] {
+  display: none;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ===== ADDED ONLY ===== */
+.go-back {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 20px;
+  padding: 8px 16px;
+  background: #1b5e20;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== ADDED ONLY ===== -->
+<h1>🌾 Farmer Welfare Schemes</h1>
+
+<div class="top-bar">
+  <select onchange="setLang(this.value)">
+    <option value="en">English</option>
+    <option value="te">తెలుగు</option>
+    <option value="hi">हिन्दी</option>
+  </select>
+</div>
+
+<div class="container">
+
+<!-- CENTRAL GOVERNMENT -->
+<h2 class="section-title" data-lang="en">Central Government Schemes</h2>
+<h2 class="section-title" data-lang="te">కేంద్ర ప్రభుత్వ పథకాలు</h2>
+<h2 class="section-title" data-lang="hi">केंद्र सरकार की योजनाएं</h2>
+
+<div class="scheme">
+  <h3>PM-KISAN</h3>
+  <p data-lang="en">₹6,000 per year financial assistance to farmers.</p>
+  <p data-lang="te">రైతులకు సంవత్సరానికి ₹6,000 ఆర్థిక సహాయం.</p>
+  <p data-lang="hi">किसानों को प्रति वर्ष ₹6,000 की सहायता।</p>
+  <a class="btn" href="https://pmkisan.gov.in" target="_blank">PM-KISAN</a>
+</div>
+
+<div class="scheme">
+  <h3>PM Fasal Bima Yojana</h3>
+  <p data-lang="en">Crop insurance scheme for farmers.</p>
+  <p data-lang="te">రైతులకు పంట బీమా పథకం.</p>
+  <p data-lang="hi">किसानों के लिए फसल बीमा योजना।</p>
+  <a class="btn" href="https://pmfby.gov.in" target="_blank">PMFBY</a>
+</div>
+
+<div class="scheme">
+  <h3>Kisan Credit Card</h3>
+  <p data-lang="en">Agricultural loans for farmers.</p>
+  <p data-lang="te">రైతులకు వ్యవసాయ రుణాలు.</p>
+  <p data-lang="hi">किसानों को कृषि ऋण।</p>
+  <a class="btn" href="https://www.myscheme.gov.in" target="_blank">KCC</a>
+</div>
+
+<div class="scheme">
+  <h3>Soil Health Card</h3>
+  <p data-lang="en">Soil quality and nutrient report.</p>
+  <p data-lang="te">నేల నాణ్యత నివేదిక.</p>
+  <p data-lang="hi">मिट्टी गुणवत्ता रिपोर्ट।</p>
+  <a class="btn" href="https://soilhealth.dac.gov.in" target="_blank">Soil Health Card</a>
+</div>
+
+<div class="scheme">
+  <h3>e-NAM</h3>
+  <p data-lang="en">National online agricultural market.</p>
+  <p data-lang="te">జాతీయ ఆన్‌లైన్ వ్యవసాయ మార్కెట్.</p>
+  <p data-lang="hi">राष्ट्रीय कृषि ऑनलाइन बाजार।</p>
+  <a class="btn" href="https://www.enam.gov.in" target="_blank">e-NAM</a>
+</div>
+
+<!-- TELANGANA GOVERNMENT -->
+<h2 class="section-title" data-lang="en">Telangana Government Schemes</h2>
+<h2 class="section-title" data-lang="te">తెలంగాణ ప్రభుత్వ పథకాలు</h2>
+<h2 class="section-title" data-lang="hi">तेलंगाना सरकार की योजनाएं</h2>
+
+<div class="scheme">
+  <h3>Rythu Bharosa</h3>
+  <p data-lang="en">Investment support per acre for Telangana farmers.</p>
+  <p data-lang="te">తెలంగాణ రైతులకు ఎకరాకు పెట్టుబడి సహాయం.</p>
+  <p data-lang="hi">तेलंगाना किसानों को प्रति एकड़ सहायता।</p>
+  <a class="btn" href="https://rythubharosa.telangana.gov.in/Default_Home.aspx" target="_blank">
+    Rythu Bharosa
+  </a>
+</div>
+
+<div class="scheme">
+  <h3 data-lang="en">Telangana Agriculture Department</h3>
+  <h3 data-lang="te">తెలంగాణ వ్యవసాయ శాఖ</h3>
+  <h3 data-lang="hi">तेलंगाना कृषि विभाग</h3>
+
+  <p data-lang="en">Official portal for all Telangana farmer schemes.</p>
+  <p data-lang="te">తెలంగాణ రైతు పథకాల అధికారిక వెబ్‌సైట్.</p>
+  <p data-lang="hi">तेलंगाना किसान योजनाओं की आधिकारिक वेबसाइट।</p>
+
+  <a class="btn" href="https://www.telangana.gov.in/departments/agriculture-and-farmer-welfare" target="_blank">
+    Agriculture Dept
+  </a>
+</div>
+
+</div>
+<button class="go-back" onclick="goBack()">⬅ Go Back  </button>
+
+
+<footer>
+© 2026 Farmer Awareness Project
+</footer>
+
+<script>
+function setLang(lang) {
+  localStorage.setItem("language", lang);   // save language
+
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display =
+      el.getAttribute('data-lang') === lang ? 'block' : 'none';
+  });
+
+  // also update dropdown selection
+  document.querySelector("select").value = lang;
+}
+
+/* ===== Load saved language when page opens ===== */
+document.addEventListener("DOMContentLoaded", function () {
+  const savedLang = localStorage.getItem("language") || "en";
+  setLang(savedLang);
+});
+
+/* ===== Go Back Button ===== */
+function goBack() {
+  window.history.back();
+}
+</script>
+
+</body>
+</html>

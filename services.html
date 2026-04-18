@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Services - FAWP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #e8f5e9, #e3f2fd);
+}
+
+
+/* Header */
+header { background:#2e7d32; color:white; padding:20px; text-align:center; }
+nav { background:#1b5e20; padding:10px; text-align:center; }
+nav a { color:white; margin:10px; text-decoration:none; font-weight:bold; }
+.container { padding:30px; }
+
+.lang { display:none; }
+.lang.active { display:block; }
+
+/* Navbar */
+nav {
+    background: #1b5e20;
+    padding: 12px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #43a047;
+}
+
+/* Container */
+.container {
+    padding: 40px;
+}
+
+/* Grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-left: 6px solid #43a047;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-left: 6px solid #1b5e20;
+}
+
+/* Titles */
+.card h3 {
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+/* Text */
+.card p {
+    color: #555;
+    font-size: 14px;
+}
+
+/* Language selector */
+.lang-select {
+    margin: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* Sections */
+section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    line-height: 1.7;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Language display */
+.lang { display: none; }
+.lang.active { display: block; }
+
+/* Icons spacing */
+.card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>FAWP Services</h1>
+</header>
+
+<nav>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="benefits.html">Benefits</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<div class="container">
+
+<!-- Language Selector -->
+<select class="lang-select" onchange="switchLanguage(this.value)">
+<option value="en">English</option>
+<option value="hi">Hindi</option>
+<option value="te">Telugu</option>
+</select>
+
+<!-- English -->
+<div class="lang en active">
+<div class="features">
+
+<div class="card" onclick="openWeatherPage()">
+<h3>🌦 Weather Updates</h3>
+                    <p>Get real-time weather forecasts, rainfall alerts, and seasonal predictions to plan farming activities efficiently.</p>
+</div>
+
+<div class="card" onclick="openServerPage()">
+<h3>🌱 Crop Guidance</h3>
+                    <p>Expert advice on crop selection, sowing, irrigation, and pest control. Modern and sustainable farming techniques to increase yield and reduce risk.</p>
+
+</div>
+
+<div class="card" onclick="openMarketPage()">
+<h3>📊 Market Prices</h3>
+                    <p>Latest market rates to ensure fair pricing and better profit for farmers.</p>
+
+</div>
+
+<div class="card" onclick="openSchemesPage()">
+<h3>🏛️ Government Schemes</h3>
+                    <p>Explore central and state government schemes for farmers, including subsidies, insurance, and financial assistance programs.</p>
+
+</div>
+
+<div class="card" onclick="openSchemesFindePage()">
+<h3>🏛️ Scheme Finder</h3>
+                    <p>        A tool that helps users quickly find eligible central and state government schemes based on their details like age and category.
+</p></div>
+
+</div>
+</div>
+
+<!-- Hindi -->
+<div class="lang hi">
+<div class="features">
+
+<div class="card" onclick="openWeatherPage()">
+<h3>🌦 मौसम अपडेट्स</h3>
+                    <p>वास्तविक समय मौसम पूर्वानुमान, वर्षा अलर्ट और मौसमी भविष्यवाणियाँ प्राप्त करें ताकि कृषि गतिविधियों की योजना कुशलतापूर्वक बनाई जा सके।</p>
+</div>
+
+<div class="card" onclick="openServerPage()">
+<h3>🌱 फसल मार्गदर्शन</h3>
+                    <p>फसल चयन, बुवाई, सिंचाई और कीट नियंत्रण पर विशेषज्ञ सलाह। आधुनिक और टिकाऊ कृषि तकनीकें ताकि उपज बढ़े और जोखिम कम हो।</p>
+</div>
+
+<div class="card" onclick="openMarketPage()">
+<h3>📊 बाज़ार मूल्य</h3>
+                    <p>ताजा बाजार दरें ताकि किसानों को उचित मूल्य और बेहतर लाभ सुनिश्चित हो सके।</p>
+</div>
+
+<div class="card" onclick="openSchemesPage()">
+                    <p>केंद्र और राज्य की किसानों के लिए योजनाओं का अन्वेषण करें, जिसमें सब्सिडी, बीमा और वित्तीय सहायता शामिल हैं।</p>
+</div>
+
+<div class="card" onclick="openSchemesFindePage()">
+                <p>        यह एक उपकरण है जो आयु और श्रेणी के आधार पर केंद्र और राज्य सरकार की योजनाओं को आसानी से खोजने में मदद करता है।</p>
+</div>
+
+</div>
+</div>
+
+<!-- Telugu -->
+<div class="lang te">
+<div class="features">
+
+<div class="card" onclick="openWeatherPage()">
+<h3>🌦 వాతావరణ సమాచారం</h3>
+                    <p>రియల్-టైమ్ వాతావరణ ఊహాకల్పన, వర్షం అలర్ట్స్ మరియు సీజనల్ అంచనాలను పొందండి, రైతుల కార్యకలాపాలను సమర్ధవంతంగా ప్లాన్ చేయడానికి.</p>
+
+</div>
+
+<div class="card" onclick="openServerPage()">
+<h3>🌱 పంట మార్గదర్శకం</h3>
+                    <p>పంట ఎంపిక, విత్తనం, నీటిపోసడం మరియు pests నియంత్రణ పై నిపుణుల సలహా. ఉత్పత్తిని పెంచడానికి మరియు రిస్క్ తగ్గించడానికి ఆధునిక మరియు సుస్థిర వ్యవసాయ పద్ధతులు.</p>
+
+</div>
+
+<div class="card" onclick="openMarketPage()">
+<h3>📊 మార్కెట్ ధరలు</h3>
+                    <p>రైతులకు సరైన ధరలు మరియు మెరుగైన లాభం కోసం తాజా మార్కెట్ రేట్లు.</p>
+
+</div>
+
+<div class="card" onclick="openSchemesPage()">
+<h3>🏛️ ప్రభుత్వ పథకాలు</h3>
+                    <p>కేంద్ర మరియు రాష్ట్ర ప్రభుత్వ పథకాలను తెలుసుకోండి, అందులో సబ్సిడీ, ఇన్సూరెన్స్ మరియు ఆర్థిక సహాయం కలవు.</p>
+
+</div>
+
+<div class="card" onclick="openSchemesFindePage()">
+<h3>🏛️ పథకాల అన్వేషణ</h3>
+<p>
+                వయస్సు మరియు వర్గం ఆధారంగా కేంద్ర మరియు రాష్ట్ర ప్రభుత్వ పథకాలను త్వరగా కనుగొనడానికి సహాయపడే సాధనం.
+
+    </p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+// Load saved language
+const savedLang = localStorage.getItem('language') || 'en';
+
+// Set dropdown
+document.querySelector('.lang-select').value = savedLang;
+
+// Apply language
+switchLanguage(savedLang);
+
+function switchLanguage(lang){
+    document.querySelectorAll('.lang').forEach(d => d.classList.remove('active'));
+    document.querySelector('.' + lang).classList.add('active');
+    localStorage.setItem('language', lang);
+}
+
+// Navigation functions
+function openWeatherPage(){ window.location.href="weather.html"; }
+function openServerPage(){ window.location.href="BestPracticesServer1.html"; }
+function openMarketPage(){ window.location.href="marketprices.html"; }
+function openSchemesPage(){ window.location.href="schemes.html"; }
+function openSchemesFindePage(){
+    // Example farmer ID (change later dynamically)
+    const farmerId = 1;
+
+    fetch(`https://your-backend.onrender.com/api/match/${farmerId}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            localStorage.setItem("schemeData", JSON.stringify(data));
+            window.location.href = "schemefinder.html";
+        })
+        .catch(err => {
+            console.error("Error:", err);
+            alert("Backend not working");
+        });
+}
+</script>
+
+</body>
+</html>

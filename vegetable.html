@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruits</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      width: 250px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .title, .text {
+      display: none;
+      padding: 5px;
+    }
+
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+    <h2 class="title en">🥕 Vegetable</h2>
+    <h2 class="title hi">🥕 सब्ज़ी</h2>
+    <h2 class="title te">🥕 కూరగాయలు</h2>
+
+<input type="text" id="search" placeholder="Search fruits..." onkeyup="searchFruit()">
+
+<div class="container" id="Vegetablelist">
+    <div class="card">
+  <h3 class="title en">🥕 Carrot</h3>
+  <h3 class="title hi">🥕 गाजर</h3>
+  <h3 class="title te">🥕 క్యారెట్</h3>
+  <p class="text en">1kg: ₹40 | 1 tonne: ₹40000</p>
+  <p class="text hi">1 किलो: ₹40 | 1 टन: ₹40000</p>
+  <p class="text te">1 కిలో: ₹40 | 1 టన్: ₹40000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥔 Potato</h3>
+  <h3 class="title hi">🥔 आलू</h3>
+  <h3 class="title te">🥔 బంగాళాదుంప</h3>
+  <p class="text en">1kg: ₹25 | 1 tonne: ₹25000</p>
+  <p class="text hi">1 किलो: ₹25 | 1 टन: ₹25000</p>
+  <p class="text te">1 కిలో: ₹25 | 1 టన్: ₹25000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🍅 Tomato</h3>
+  <h3 class="title hi">🍅 टमाटर</h3>
+  <h3 class="title te">🍅 టమాటా</h3>
+  <p class="text en">1kg: ₹30 | 1 tonne: ₹30000</p>
+  <p class="text hi">1 किलो: ₹30 | 1 टन: ₹30000</p>
+  <p class="text te">1 కిలో: ₹30 | 1 టన్: ₹30000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🧅 Onion</h3>
+  <h3 class="title hi">🧅 प्याज</h3>
+  <h3 class="title te">🧅 ఉల్లి</h3>
+  <p class="text en">1kg: ₹35 | 1 tonne: ₹35000</p>
+  <p class="text hi">1 किलो: ₹35 | 1 टन: ₹35000</p>
+  <p class="text te">1 కిలో: ₹35 | 1 టన్: ₹35000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🧄 Garlic</h3>
+  <h3 class="title hi">🧄 लहसुन</h3>
+  <h3 class="title te">🧄 వెల్లుల్లి</h3>
+  <p class="text en">1kg: ₹120 | 1 tonne: ₹120000</p>
+  <p class="text hi">1 किलो: ₹120 | 1 टन: ₹120000</p>
+  <p class="text te">1 కిలో: ₹120 | 1 టన్: ₹120000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥦 Broccoli</h3>
+  <h3 class="title hi">🥦 ब्रोकली</h3>
+  <h3 class="title te">🥦 బ్రోకలీ</h3>
+  <p class="text en">1kg: ₹150 | 1 tonne: ₹150000</p>
+  <p class="text hi">1 किलो: ₹150 | 1 टन: ₹150000</p>
+  <p class="text te">1 కిలో: ₹150 | 1 టన్: ₹150000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Cabbage</h3>
+  <h3 class="title hi">🥬 पत्ता गोभी</h3>
+  <h3 class="title te">🥬 క్యాబేజీ</h3>
+  <p class="text en">1kg: ₹20 | 1 tonne: ₹20000</p>
+  <p class="text hi">1 किलो: ₹20 | 1 टन: ₹20000</p>
+  <p class="text te">1 కిలో: ₹20 | 1 టన్: ₹20000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Spinach</h3>
+  <h3 class="title hi">🥬 पालक</h3>
+  <h3 class="title te">🥬 పాలకూర</h3>
+  <p class="text en">1kg: ₹30 | 1 tonne: ₹30000</p>
+  <p class="text hi">1 किलो: ₹30 | 1 टन: ₹30000</p>
+  <p class="text te">1 కిలో: ₹30 | 1 టన్: ₹30000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🌶️ Green Chili</h3>
+  <h3 class="title hi">🌶️ हरी मिर्च</h3>
+  <h3 class="title te">🌶️ పచ్చి మిర్చి</h3>
+  <p class="text en">1kg: ₹80 | 1 tonne: ₹80000</p>
+  <p class="text hi">1 किलो: ₹80 | 1 टन: ₹80000</p>
+  <p class="text te">1 కిలో: ₹80 | 1 టన్: ₹80000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥒 Cucumber</h3>
+  <h3 class="title hi">🥒 खीरा</h3>
+  <h3 class="title te">🥒 దోసకాయ</h3>
+  <p class="text en">1kg: ₹25 | 1 tonne: ₹25000</p>
+  <p class="text hi">1 किलो: ₹25 | 1 टन: ₹25000</p>
+  <p class="text te">1 కిలో: ₹25 | 1 టన్: ₹25000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🍆 Eggplant (Brinjal)</h3>
+  <h3 class="title hi">🍆 बैंगन</h3>
+  <h3 class="title te">🍆 వంకాయ</h3>
+  <p class="text en">1kg: ₹30 | 1 tonne: ₹30000</p>
+  <p class="text hi">1 किलो: ₹30 | 1 टन: ₹30000</p>
+  <p class="text te">1 కిలో: ₹30 | 1 టన్: ₹30000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Cauliflower</h3>
+  <h3 class="title hi">🥬 फूल गोभी</h3>
+  <h3 class="title te">🥬 కాలీఫ్లవర్</h3>
+  <p class="text en">1kg: ₹35 | 1 tonne: ₹35000</p>
+  <p class="text hi">1 किलो: ₹35 | 1 टन: ₹35000</p>
+  <p class="text te">1 కిలో: ₹35 | 1 టన్: ₹35000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🌽 Corn</h3>
+  <h3 class="title hi">🌽 मक्का</h3>
+  <h3 class="title te">🌽 మొక్కజొన్న</h3>
+  <p class="text en">1kg: ₹40 | 1 tonne: ₹40000</p>
+  <p class="text hi">1 किलो: ₹40 | 1 टन: ₹40000</p>
+  <p class="text te">1 కిలో: ₹40 | 1 టన్: ₹40000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥒 Bottle Gourd</h3>
+  <h3 class="title hi">🥒 लौकी</h3>
+  <h3 class="title te">🥒 సొరకాయ</h3>
+  <p class="text en">1kg: ₹20 | 1 tonne: ₹20000</p>
+  <p class="text hi">1 किलो: ₹20 | 1 टन: ₹20000</p>
+  <p class="text te">1 కిలో: ₹20 | 1 టన్: ₹20000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥒 Bitter Gourd</h3>
+  <h3 class="title hi">🥒 करेला</h3>
+  <h3 class="title te">🥒 కాకరకాయ</h3>
+  <p class="text en">1kg: ₹50 | 1 tonne: ₹50000</p>
+  <p class="text hi">1 किलो: ₹50 | 1 टन: ₹50000</p>
+  <p class="text te">1 కిలో: ₹50 | 1 టన్: ₹50000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥒 Ridge Gourd</h3>
+  <h3 class="title hi">🥒 तोरी</h3>
+  <h3 class="title te">🥒 బీరకాయ</h3>
+  <p class="text en">1kg: ₹30 | 1 tonne: ₹30000</p>
+  <p class="text hi">1 किलो: ₹30 | 1 टन: ₹30000</p>
+  <p class="text te">1 కిలో: ₹30 | 1 టన్: ₹30000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🌶️ Capsicum</h3>
+  <h3 class="title hi">🌶️ शिमला मिर्च</h3>
+  <h3 class="title te">🌶️ బెంగళూరు మిరపకాయ</h3>
+  <p class="text en">1kg: ₹120 | 1 tonne: ₹120000</p>
+  <p class="text hi">1 किलो: ₹120 | 1 टन: ₹120000</p>
+  <p class="text te">1 కిలో: ₹120 | 1 టన్: ₹120000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥔 Sweet Potato</h3>
+  <h3 class="title hi">🥔 शकरकंद</h3>
+  <h3 class="title te">🥔 చిలగడదుంప</h3>
+  <p class="text en">1kg: ₹40 | 1 tonne: ₹40000</p>
+  <p class="text hi">1 किलो: ₹40 | 1 टन: ₹40000</p>
+  <p class="text te">1 కిలో: ₹40 | 1 టన్: ₹40000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🧅 Spring Onion</h3>
+  <h3 class="title hi">🧅 हरा प्याज</h3>
+  <h3 class="title te">🧅 పచ్చి ఉల్లి</h3>
+  <p class="text en">1kg: ₹60 | 1 tonne: ₹60000</p>
+  <p class="text hi">1 किलो: ₹60 | 1 टन: ₹60000</p>
+  <p class="text te">1 కిలో: ₹60 | 1 టన్: ₹60000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Lettuce</h3>
+  <h3 class="title hi">🥬 लेट्यूस</h3>
+  <h3 class="title te">🥬 లెట్టూస్</h3>
+  <p class="text en">1kg: ₹120 | 1 tonne: ₹120000</p>
+  <p class="text hi">1 किलो: ₹120 | 1 टन: ₹120000</p>
+  <p class="text te">1 కిలో: ₹120 | 1 టన్: ₹120000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Fenugreek Leaves</h3>
+  <h3 class="title hi">🥬 मेथी</h3>
+  <h3 class="title te">🥬 మెంతి కూర</h3>
+  <p class="text en">1kg: ₹50 | 1 tonne: ₹50000</p>
+  <p class="text hi">1 किलो: ₹50 | 1 टन: ₹50000</p>
+  <p class="text te">1 కిలో: ₹50 | 1 టన్: ₹50000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Coriander Leaves</h3>
+  <h3 class="title hi">🥬 धनिया पत्ता</h3>
+  <h3 class="title te">🥬 కొత్తిమీర</h3>
+  <p class="text en">1kg: ₹80 | 1 tonne: ₹80000</p>
+  <p class="text hi">1 किलो: ₹80 | 1 टन: ₹80000</p>
+  <p class="text te">1 కిలో: ₹80 | 1 టన్: ₹80000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🫛 Peas</h3>
+  <h3 class="title hi">🫛 मटर</h3>
+  <h3 class="title te">🫛 బఠాణి</h3>
+  <p class="text en">1kg: ₹100 | 1 tonne: ₹100000</p>
+  <p class="text hi">1 किलो: ₹100 | 1 टन: ₹100000</p>
+  <p class="text te">1 కిలో: ₹100 | 1 టన్: ₹100000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥕 Beetroot</h3>
+  <h3 class="title hi">🥕 चुकंदर</h3>
+  <h3 class="title te">🥕 బీట్‌రూట్</h3>
+  <p class="text en">1kg: ₹35 | 1 tonne: ₹35000</p>
+  <p class="text hi">1 किलो: ₹35 | 1 टन: ₹35000</p>
+  <p class="text te">1 కిలో: ₹35 | 1 టన్: ₹35000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🌿 Drumstick (Moringa)</h3>
+  <h3 class="title hi">🌿 सहजन</h3>
+  <h3 class="title te">🌿 మునగకాయ</h3>
+  <p class="text en">1kg: ₹70 | 1 tonne: ₹70000</p>
+  <p class="text hi">1 किलो: ₹70 | 1 टन: ₹70000</p>
+  <p class="text te">1 కిలో: ₹70 | 1 టన్: ₹70000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🧄 Ginger</h3>
+  <h3 class="title hi">🧄 अदरक</h3>
+  <h3 class="title te">🧄 అల్లం</h3>
+  <p class="text en">1kg: ₹120 | 1 tonne: ₹120000</p>
+  <p class="text hi">1 किलो: ₹120 | 1 टन: ₹120000</p>
+  <p class="text te">1 కిలో: ₹120 | 1 టన్: ₹120000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥒 Pumpkin</h3>
+  <h3 class="title hi">🥒 कद्दू</h3>
+  <h3 class="title te">🥒 గుమ్మడికాయ</h3>
+  <p class="text en">1kg: ₹20 | 1 tonne: ₹20000</p>
+  <p class="text hi">1 किलो: ₹20 | 1 टन: ₹20000</p>
+  <p class="text te">1 కిలో: ₹20 | 1 టన్: ₹20000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥒 Ash Gourd</h3>
+  <h3 class="title hi">🥒 पेठा</h3>
+  <h3 class="title te">🥒 బూడిద గుమ్మడికాయ</h3>
+  <p class="text en">1kg: ₹15 | 1 tonne: ₹15000</p>
+  <p class="text hi">1 किलो: ₹15 | 1 टन: ₹15000</p>
+  <p class="text te">1 కిలో: ₹15 | 1 టన్: ₹15000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🌿 Curry Leaves</h3>
+  <h3 class="title hi">🌿 करी पत्ता</h3>
+  <h3 class="title te">🌿 కరివేపాకు</h3>
+  <p class="text en">1kg: ₹150 | 1 tonne: ₹150000</p>
+  <p class="text hi">1 किलो: ₹150 | 1 टन: ₹150000</p>
+  <p class="text te">1 కిలో: ₹150 | 1 టన్: ₹150000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Amaranth Leaves</h3>
+  <h3 class="title hi">🥬 चौलाई</h3>
+  <h3 class="title te">🥬 తోటకూర</h3>
+  <p class="text en">1kg: ₹40 | 1 tonne: ₹40000</p>
+  <p class="text hi">1 किलो: ₹40 | 1 टन: ₹40000</p>
+  <p class="text te">1 కిలో: ₹40 | 1 టన్: ₹40000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Kale</h3>
+  <h3 class="title hi">🥬 केल</h3>
+  <h3 class="title te">🥬 కేల్</h3>
+  <p class="text en">1kg: ₹200 | 1 tonne: ₹200000</p>
+  <p class="text hi">1 किलो: ₹200 | 1 टन: ₹200000</p>
+  <p class="text te">1 కిలో: ₹200 | 1 టన్: ₹200000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥒 Zucchini</h3>
+  <h3 class="title hi">🥒 ज़ुकीनी</h3>
+  <h3 class="title te">🥒 జుక్కిని</h3>
+  <p class="text en">1kg: ₹180 | 1 tonne: ₹180000</p>
+  <p class="text hi">1 किलो: ₹180 | 1 टन: ₹180000</p>
+  <p class="text te">1 కిలో: ₹180 | 1 టన్: ₹180000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🌶️ Red Chili</h3>
+  <h3 class="title hi">🌶️ लाल मिर्च</h3>
+  <h3 class="title te">🌶️ ఎర్ర మిర్చి</h3>
+  <p class="text en">1kg: ₹200 | 1 tonne: ₹200000</p>
+  <p class="text hi">1 किलो: ₹200 | 1 टन: ₹200000</p>
+  <p class="text te">1 కిలో: ₹200 | 1 టన్: ₹200000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Radish</h3>
+  <h3 class="title hi">🥬 मूली</h3>
+  <h3 class="title te">🥬 ముల్లంగి</h3>
+  <p class="text en">1kg: ₹25 | 1 tonne: ₹25000</p>
+  <p class="text hi">1 किलो: ₹25 | 1 टन: ₹25000</p>
+  <p class="text te">1 కిలో: ₹25 | 1 టన్: ₹25000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Turnip</h3>
+  <h3 class="title hi">🥬 शलजम</h3>
+  <h3 class="title te">🥬 టర్నిప్</h3>
+  <p class="text en">1kg: ₹30 | 1 tonne: ₹30000</p>
+  <p class="text hi">1 किलो: ₹30 | 1 टन: ₹30000</p>
+  <p class="text te">1 కిలో: ₹30 | 1 టన్: ₹30000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Parwal (Pointed Gourd)</h3>
+  <h3 class="title hi">🥬 परवल</h3>
+  <h3 class="title te">🥬 పొట్లకాయ</h3>
+  <p class="text en">1kg: ₹60 | 1 tonne: ₹60000</p>
+  <p class="text hi">1 किलो: ₹60 | 1 टन: ₹60000</p>
+  <p class="text te">1 కిలో: ₹60 | 1 టన్: ₹60000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Ivy Gourd</h3>
+  <h3 class="title hi">🥬 टिंडा / कुंदरू</h3>
+  <h3 class="title te">🥬 దొండకాయ</h3>
+  <p class="text en">1kg: ₹50 | 1 tonne: ₹50000</p>
+  <p class="text hi">1 किलो: ₹50 | 1 टन: ₹50000</p>
+  <p class="text te">1 కిలో: ₹50 | 1 టన్: ₹50000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Cluster Beans</h3>
+  <h3 class="title hi">🥬 गवार फली</h3>
+  <h3 class="title te">🥬 గోరుచిక్కుడు</h3>
+  <p class="text en">1kg: ₹70 | 1 tonne: ₹70000</p>
+  <p class="text hi">1 किलो: ₹70 | 1 टन: ₹70000</p>
+  <p class="text te">1 కిలో: ₹70 | 1 టన్: ₹70000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 French Beans</h3>
+  <h3 class="title hi">🥬 फ्रेंच बीन्स</h3>
+  <h3 class="title te">🥬 ఫ్రెంచ్ బీన్స్</h3>
+  <p class="text en">1kg: ₹90 | 1 tonne: ₹90000</p>
+  <p class="text hi">1 किलो: ₹90 | 1 टन: ₹90000</p>
+  <p class="text te">1 కిలో: ₹90 | 1 టన్: ₹90000</p>
+</div>
+<div class="card">
+  <h3 class="title en">🥬 Fenugreek Sprouts</h3>
+  <h3 class="title hi">🥬 मेथी अंकुर</h3>
+  <h3 class="title te">🥬 మెంతి మొలకలు</h3>
+  <p class="text en">1kg: ₹120 | 1 tonne: ₹120000</p>
+  <p class="text hi">1 किलो: ₹120 | 1 टन: ₹120000</p>
+  <p class="text te">1 కిలో: ₹120 | 1 టన్: ₹120000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Mustard Greens</h3>
+  <h3 class="title hi">🥬 सरसों का साग</h3>
+  <h3 class="title te">🥬 ఆవ ఆకులు</h3>
+  <p class="text en">1kg: ₹60 | 1 tonne: ₹60000</p>
+  <p class="text hi">1 किलो: ₹60 | 1 टन: ₹60000</p>
+  <p class="text te">1 కిలో: ₹60 | 1 టన్: ₹60000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Collard Greens</h3>
+  <h3 class="title hi">🥬 कोलार्ड ग्रीन्स</h3>
+  <h3 class="title te">🥬 కోలార్డ్ ఆకులు</h3>
+  <p class="text en">1kg: ₹180 | 1 tonne: ₹180000</p>
+  <p class="text hi">1 किलो: ₹180 | 1 टन: ₹180000</p>
+  <p class="text te">1 కిలో: ₹180 | 1 టన్: ₹180000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Swiss Chard</h3>
+  <h3 class="title hi">🥬 स्विस चार्ड</h3>
+  <h3 class="title te">🥬 స్విస్ చార్డ్</h3>
+  <p class="text en">1kg: ₹200 | 1 tonne: ₹200000</p>
+  <p class="text hi">1 किलो: ₹200 | 1 टन: ₹200000</p>
+  <p class="text te">1 కిలో: ₹200 | 1 టన్: ₹200000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Leek</h3>
+  <h3 class="title hi">🥬 लीक्स</h3>
+  <h3 class="title te">🥬 లీక్</h3>
+  <p class="text en">1kg: ₹220 | 1 tonne: ₹220000</p>
+  <p class="text hi">1 किलो: ₹220 | 1 टन: ₹220000</p>
+  <p class="text te">1 కిలో: ₹220 | 1 టన్: ₹220000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Celery</h3>
+  <h3 class="title hi">🥬 सेलरी</h3>
+  <h3 class="title te">🥬 సెలరీ</h3>
+  <p class="text en">1kg: ₹150 | 1 tonne: ₹150000</p>
+  <p class="text hi">1 किलो: ₹150 | 1 टन: ₹150000</p>
+  <p class="text te">1 కిలో: ₹150 | 1 టన్: ₹150000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Asparagus</h3>
+  <h3 class="title hi">🥬 शतावरी</h3>
+  <h3 class="title te">🥬 అశ్పరగస్</h3>
+  <p class="text en">1kg: ₹400 | 1 tonne: ₹400000</p>
+  <p class="text hi">1 किलो: ₹400 | 1 टन: ₹400000</p>
+  <p class="text te">1 కిలో: ₹400 | 1 టన్: ₹400000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Artichoke</h3>
+  <h3 class="title hi">🥬 आर्टिचोक</h3>
+  <h3 class="title te">🥬 ఆర్టిచోక్</h3>
+  <p class="text en">1kg: ₹500 | 1 tonne: ₹500000</p>
+  <p class="text hi">1 किलो: ₹500 | 1 टन: ₹500000</p>
+  <p class="text te">1 కిలో: ₹500 | 1 టన్: ₹500000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Okra (Lady Finger)</h3>
+  <h3 class="title hi">🥬 भिंडी</h3>
+  <h3 class="title te">🥬 బెండకాయ</h3>
+  <p class="text en">1kg: ₹40 | 1 tonne: ₹40000</p>
+  <p class="text hi">1 किलो: ₹40 | 1 टन: ₹40000</p>
+  <p class="text te">1 కిలో: ₹40 | 1 టన్: ₹40000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Snake Gourd</h3>
+  <h3 class="title hi">🥬 चिचिंडा</h3>
+  <h3 class="title te">🥬 పొట్లగడ్డ</h3>
+  <p class="text en">1kg: ₹30 | 1 tonne: ₹30000</p>
+  <p class="text hi">1 किलो: ₹30 | 1 टन: ₹30000</p>
+  <p class="text te">1 కిలో: ₹30 | 1 టన్: ₹30000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Chayote</h3>
+  <h3 class="title hi">🥬 चौचौ</h3>
+  <h3 class="title te">🥬 చయోట్</h3>
+  <p class="text en">1kg: ₹60 | 1 tonne: ₹60000</p>
+  <p class="text hi">1 किलो: ₹60 | 1 टन: ₹60000</p>
+  <p class="text te">1 కిలో: ₹60 | 1 టన్: ₹60000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Taro Root</h3>
+  <h3 class="title hi">🥬 अरबी</h3>
+  <h3 class="title te">🥬 చిలకడ దుంప</h3>
+  <p class="text en">1kg: ₹50 | 1 tonne: ₹50000</p>
+  <p class="text hi">1 किलो: ₹50 | 1 टन: ₹50000</p>
+  <p class="text te">1 కిలో: ₹50 | 1 టన్: ₹50000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Yam</h3>
+  <h3 class="title hi">🥬 जिमीकंद</h3>
+  <h3 class="title te">🥬 కందగడ్డ</h3>
+  <p class="text en">1kg: ₹70 | 1 tonne: ₹70000</p>
+  <p class="text hi">1 किलो: ₹70 | 1 टन: ₹70000</p>
+  <p class="text te">1 కిలో: ₹70 | 1 టన్: ₹70000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Turmeric Root</h3>
+  <h3 class="title hi">🥬 हल्दी</h3>
+  <h3 class="title te">🥬 పసుపు</h3>
+  <p class="text en">1kg: ₹90 | 1 tonne: ₹90000</p>
+  <p class="text hi">1 किलो: ₹90 | 1 टन: ₹90000</p>
+  <p class="text te">1 కిలో: ₹90 | 1 టన్: ₹90000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Lotus Stem</h3>
+  <h3 class="title hi">🥬 कमल ककड़ी</h3>
+  <h3 class="title te">🥬 తామర కాండం</h3>
+  <p class="text en">1kg: ₹120 | 1 tonne: ₹120000</p>
+  <p class="text hi">1 किलो: ₹120 | 1 टन: ₹120000</p>
+  <p class="text te">1 కిలో: ₹120 | 1 టన్: ₹120000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Kohlrabi</h3>
+  <h3 class="title hi">🥬 कोहलराबी</h3>
+  <h3 class="title te">🥬 కోహ్ల్రాబి</h3>
+  <p class="text en">1kg: ₹180 | 1 tonne: ₹180000</p>
+  <p class="text hi">1 किलो: ₹180 | 1 टन: ₹180000</p>
+  <p class="text te">1 కిలో: ₹180 | 1 టన్: ₹180000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Water Spinach</h3>
+  <h3 class="title hi">🥬 पानी पालक</h3>
+  <h3 class="title te">🥬 కంగుకూర</h3>
+  <p class="text en">1kg: ₹60 | 1 tonne: ₹60000</p>
+  <p class="text hi">1 किलो: ₹60 | 1 टन: ₹60000</p>
+  <p class="text te">1 కిలో: ₹60 | 1 టన్: ₹60000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Bamboo Shoots</h3>
+  <h3 class="title hi">🥬 बांस के अंकुर</h3>
+  <h3 class="title te">🥬 వెదురు మొలకలు</h3>
+  <p class="text en">1kg: ₹150 | 1 tonne: ₹150000</p>
+  <p class="text hi">1 किलो: ₹150 | 1 टन: ₹150000</p>
+  <p class="text te">1 కిలో: ₹150 | 1 టన్: ₹150000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Pea Eggplant</h3>
+  <h3 class="title hi">🥬 रतालू बैंगन</h3>
+  <h3 class="title te">🥬 గుత్తి వంకాయ</h3>
+  <p class="text en">1kg: ₹120 | 1 tonne: ₹120000</p>
+  <p class="text hi">1 किलो: ₹120 | 1 टन: ₹120000</p>
+  <p class="text te">1 కిలో: ₹120 | 1 టన్: ₹120000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Winged Bean</h3>
+  <h3 class="title hi">🥬 चौकोर फली</h3>
+  <h3 class="title te">🥬 రెక్కల బీన్స్</h3>
+  <p class="text en">1kg: ₹140 | 1 tonne: ₹140000</p>
+  <p class="text hi">1 किलो: ₹140 | 1 टन: ₹140000</p>
+  <p class="text te">1 కిలో: ₹140 | 1 టన్: ₹140000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Bitter Melon Leaves</h3>
+  <h3 class="title hi">🥬 करेला पत्ता</h3>
+  <h3 class="title te">🥬 కాకర ఆకులు</h3>
+  <p class="text en">1kg: ₹80 | 1 tonne: ₹80000</p>
+  <p class="text hi">1 किलो: ₹80 | 1 टन: ₹80000</p>
+  <p class="text te">1 కిలో: ₹80 | 1 టన్: ₹80000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Pumpkin Flowers</h3>
+  <h3 class="title hi">🥬 कद्दू के फूल</h3>
+  <h3 class="title te">🥬 గుమ్మడి పువ్వులు</h3>
+  <p class="text en">1kg: ₹200 | 1 tonne: ₹200000</p>
+  <p class="text hi">1 किलो: ₹200 | 1 टन: ₹200000</p>
+  <p class="text te">1 కిలో: ₹200 | 1 టన్: ₹200000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Lotus Root</h3>
+  <h3 class="title hi">🥬 कमल ककड़ी</h3>
+  <h3 class="title te">🥬 తామర గడ్డ</h3>
+  <p class="text en">1kg: ₹150 | 1 tonne: ₹150000</p>
+  <p class="text hi">1 किलो: ₹150 | 1 टन: ₹150000</p>
+  <p class="text te">1 కిలో: ₹150 | 1 టన్: ₹150000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Cassava (Tapioca)</h3>
+  <h3 class="title hi">🥬 कसावा</h3>
+  <h3 class="title te">🥬 సగ్గుబియ్యం గడ్డ</h3>
+  <p class="text en">1kg: ₹30 | 1 tonne: ₹30000</p>
+  <p class="text hi">1 किलो: ₹30 | 1 टन: ₹30000</p>
+  <p class="text te">1 కిలో: ₹30 | 1 టన్: ₹30000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Black Pepper Plant Leaves</h3>
+  <h3 class="title hi">🥬 काली मिर्च पत्ते</h3>
+  <h3 class="title te">🥬 మిరియాల ఆకులు</h3>
+  <p class="text en">1kg: ₹250 | 1 tonne: ₹250000</p>
+  <p class="text hi">1 किलो: ₹250 | 1 टन: ₹250000</p>
+  <p class="text te">1 కిలో: ₹250 | 1 టన్: ₹250000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Sorrel Leaves</h3>
+  <h3 class="title hi">🥬 खट्टी भाजी</h3>
+  <h3 class="title te">🥬 గోంగూర</h3>
+  <p class="text en">1kg: ₹70 | 1 tonne: ₹70000</p>
+  <p class="text hi">1 किलो: ₹70 | 1 टन: ₹70000</p>
+  <p class="text te">1 కిలో: ₹70 | 1 టన్: ₹70000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Purslane</h3>
+  <h3 class="title hi">🥬 कुलफा</h3>
+  <h3 class="title te">🥬 గంగవల్లి ఆకులు</h3>
+  <p class="text en">1kg: ₹90 | 1 tonne: ₹90000</p>
+  <p class="text hi">1 किलो: ₹90 | 1 टन: ₹90000</p>
+  <p class="text te">1 కిలో: ₹90 | 1 టన్: ₹90000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Malabar Spinach</h3>
+  <h3 class="title hi">🥬 पोई साग</h3>
+  <h3 class="title te">🥬 బచ్చలి ఆకులు</h3>
+  <p class="text en">1kg: ₹60 | 1 tonne: ₹60000</p>
+  <p class="text hi">1 किलो: ₹60 | 1 टन: ₹60000</p>
+  <p class="text te">1 కిలో: ₹60 | 1 టన్: ₹60000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Drumstick Leaves</h3>
+  <h3 class="title hi">🥬 सहजन पत्ते</h3>
+  <h3 class="title te">🥬 మునగ ఆకులు</h3>
+  <p class="text en">1kg: ₹120 | 1 tonne: ₹120000</p>
+  <p class="text hi">1 किलो: ₹120 | 1 टन: ₹120000</p>
+  <p class="text te">1 కిలో: ₹120 | 1 టన్: ₹120000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Kale Microgreens</h3>
+  <h3 class="title hi">🥬 केल माइक्रोग्रीन्स</h3>
+  <h3 class="title te">🥬 కేల్ మైక్రోగ్రీన్స్</h3>
+  <p class="text en">1kg: ₹800 | 1 tonne: ₹800000</p>
+  <p class="text hi">1 किलो: ₹800 | 1 टन: ₹800000</p>
+  <p class="text te">1 కిలో: ₹800 | 1 టన్: ₹800000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Beet Greens</h3>
+  <h3 class="title hi">🥬 चुकंदर पत्ते</h3>
+  <h3 class="title te">🥬 బీట్ ఆకులు</h3>
+  <p class="text en">1kg: ₹70 | 1 tonne: ₹70000</p>
+  <p class="text hi">1 किलो: ₹70 | 1 टन: ₹70000</p>
+  <p class="text te">1 కిలో: ₹70 | 1 టన్: ₹70000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Endive</h3>
+  <h3 class="title hi">🥬 एंडाइव</h3>
+  <h3 class="title te">🥬 ఎండైవ్</h3>
+  <p class="text en">1kg: ₹300 | 1 tonne: ₹300000</p>
+  <p class="text hi">1 किलो: ₹300 | 1 टन: ₹300000</p>
+  <p class="text te">1 కిలో: ₹300 | 1 టన్: ₹300000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Arugula</h3>
+  <h3 class="title hi">🥬 अरुगुला</h3>
+  <h3 class="title te">🥬 అరుగులా</h3>
+  <p class="text en">1kg: ₹350 | 1 tonne: ₹350000</p>
+  <p class="text hi">1 किलो: ₹350 | 1 टन: ₹350000</p>
+  <p class="text te">1 కిలో: ₹350 | 1 టన్: ₹350000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Fennel Bulb</h3>
+  <h3 class="title hi">🥬 सौंफ</h3>
+  <h3 class="title te">🥬 సోంపు కంద</h3>
+  <p class="text en">1kg: ₹200 | 1 tonne: ₹200000</p>
+  <p class="text hi">1 किलो: ₹200 | 1 टन: ₹200000</p>
+  <p class="text te">1 కిలో: ₹200 | 1 టన్: ₹200000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Garlic Chives</h3>
+  <h3 class="title hi">🥬 लहसुन पत्ते</h3>
+  <h3 class="title te">🥬 వెల్లుల్లి ఆకులు</h3>
+  <p class="text en">1kg: ₹250 | 1 tonne: ₹250000</p>
+  <p class="text hi">1 किलो: ₹250 | 1 टन: ₹250000</p>
+  <p class="text te">1 కిలో: ₹250 | 1 టన్: ₹250000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Pea Shoots</h3>
+  <h3 class="title hi">🥬 मटर के अंकुर</h3>
+  <h3 class="title te">🥬 బఠాణి మొలకలు</h3>
+  <p class="text en">1kg: ₹300 | 1 tonne: ₹300000</p>
+  <p class="text hi">1 किलो: ₹300 | 1 टन: ₹300000</p>
+  <p class="text te">1 కిలో: ₹300 | 1 టన్: ₹300000</p>
+</div>
+
+<div class="card">
+  <h3 class="title en">🥬 Radicchio</h3>
+  <h3 class="title hi">🥬 रेडिचियो</h3>
+  <h3 class="title te">🥬 రాడిచియో</h3>
+  <p class="text en">1kg: ₹400 | 1 tonne: ₹400000</p>
+  <p class="text hi">1 किलो: ₹400 | 1 टन: ₹400000</p>
+  <p class="text te">1 కిలో: ₹400 | 1 టన్: ₹400000</p>
+</div>
+    </div>
+
+<script>
+  // Language setting
+  let lang = localStorage.getItem("language") || "en";
+
+  document.querySelectorAll(".title." + lang).forEach(el => {
+    el.classList.add("active");
+  });
+
+  document.querySelectorAll(".text." + lang).forEach(el => {
+    el.classList.add("active");
+  });
+
+  // Search function
+  function searchFruit() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+      let title = card.querySelector(".title." + lang).innerText.toLowerCase();
+
+      if (title.includes(input)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vegetables & Crops Information</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f7f4;
+  margin: 0;
+}
+
+header {
+  background-color: #2e7d32;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.language-select {
+  margin-top: 10px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.info-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.emoji {
+  font-size: 30px;
+}
+
+button, select {
+  padding: 10px 15px;
+  background: #1b5e20;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1 id="mainTitle">🌾 Vegetables & Field Crops</h1>
+<p id="subTitle">Complete agricultural information</p>
+</header>
+
+<div class="container">
+
+<div id="cropInfo" class="info-box"></div>
+
+<div class="cards">
+
+<div class="card" onclick="showCrop('paddy')">
+<div class="emoji">🌾</div>
+<h4 data-en="Paddy (Rice)" data-hi="धान" data-te="వరి">Paddy (Rice)</h4>
+</div>
+
+<div class="card" onclick="showCrop('corn')">
+<div class="emoji">🌽</div>
+<h4 data-en="Corn (Maize)" data-hi="मक्का" data-te="మొక్కజొన్న">Corn (Maize)</h4>
+</div>
+
+<div class="card" onclick="showCrop('tomato')">
+<div class="emoji">🍅</div>
+<h4 data-en="Tomato" data-hi="टमाटर" data-te="టమాటా">Tomato</h4>
+</div>
+
+<div class="card" onclick="showCrop('brinjal')">
+<div class="emoji">🍆</div>
+<h4 data-en="Brinjal" data-hi="बैंगन" data-te="వంకాయ">Brinjal</h4>
+</div>
+
+<div class="card" onclick="showCrop('cotton')">
+<div class="emoji">🌿</div>
+<h4 data-en="Cotton" data-hi="कपास" data-te="పత్తి">Cotton</h4>
+</div>
+
+<div class="card" onclick="showCrop('carrot')">
+<div class="emoji">🥕</div>
+<h4 data-en="Carrot" data-hi="गाजर" data-te="క్యారెట్">Carrot</h4>
+</div>
+
+<div class="card" onclick="showCrop('potato')">
+<div class="emoji">🥔</div>
+<h4 data-en="Potato" data-hi="आलू" data-te="బంగాళదుంప">Potato</h4>
+</div>
+
+<div class="card" onclick="showCrop('onion')">
+<div class="emoji">🧅</div>
+<h4 data-en="Onion" data-hi="प्याज" data-te="ఉల్లిపాయ">Onion</h4>
+</div>
+
+<div class="card" onclick="showCrop('garlic')">
+<div class="emoji">🧄</div>
+<h4 data-en="Garlic" data-hi="लहसुन" data-te="వెల్లులి">Garlic</h4>
+</div>
+
+<div class="card" onclick="showCrop('ladyfinger')">
+<div class="emoji">🌿</div>
+<h4 data-en="Lady Finger" data-hi="भिंडी" data-te="బెండకాయ">Lady Finger</h4>
+</div>
+
+<div class="card" onclick="showCrop('cauliflower')">
+<div class="emoji">🥦</div>
+<h4 data-en="Cauliflower" data-hi="फूलगोभी" data-te="కాలీఫ్లవర్">Cauliflower</h4>
+</div>
+
+<div class="card" onclick="showCrop('spinach')">
+<div class="emoji">🥬</div>
+<h4 data-en="Spinach" data-hi="पालक" data-te="పాలకూర">Spinach</h4>
+</div>
+
+<div class="card" onclick="showCrop('cucumber')">
+<div class="emoji">🥒</div>
+<h4 data-en="Cucumber" data-hi="खीरा" data-te="దోసకాయ">Cucumber</h4>
+</div>
+
+<div class="card" onclick="showCrop('pumpkin')">
+<div class="emoji">🎃</div>
+<h4 data-en="Pumpkin" data-hi="कद्दू" data-te="గుమ్మడికాయ">Pumpkin</h4>
+</div>
+
+<div class="card" onclick="showCrop('peas')">
+<div class="emoji">🟢</div>
+<h4 data-en="Green Peas" data-hi="मटर" data-te="బఠానీ">Green Peas</h4>
+</div>
+
+<div class="card" onclick="showCrop('beans')">
+<div class="emoji">🫘</div>
+<h4 data-en="Beans" data-hi="बीन्स" data-te="బీన్స్">Beans</h4>
+</div>
+
+<div class="card" onclick="showCrop('radish')">
+<div class="emoji">🌱</div>
+<h4 data-en="Radish" data-hi="मूली" data-te="ముల్లంగి">Radish</h4>
+</div>
+
+</div>
+
+<button onclick="history.back()" id="backBtn">⬅ Back</button>
+
+</div>
+
+<script>
+  let currentLang = localStorage.getItem("language") || "en";
+let selectedCrop = null;
+document.querySelectorAll(".card h4").forEach(function (el) {
+    const text = el.getAttribute("data-" + currentLang);
+    if (text) {
+        el.innerText = text;
+    }
+});
+
+
+const crops = {
+    paddy:{
+
+en:`
+<h2>🌾 Paddy (Rice)</h2>
+
+<p><b>Soil:</b> Clayey or loamy soil with good water retention</p>
+<p><b>Climate:</b> 20°C – 35°C (Warm & humid)</p>
+<p><b>Water Requirement:</b> Requires standing water (5–10 cm water level)</p>
+<p><b>Sowing Season:</b> Kharif (June – July)</p>
+<p><b>Harvest:</b> 120–150 days</p>
+<p><b>Seed Rate:</b> 30–40 kg/hectare</p>
+<p><b>Yield:</b> 4–6 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Stem Borer</li>
+<li>Brown Plant Hopper</li>
+<li>Leaf Folder</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Blast Disease</li>
+<li>Bacterial Leaf Blight</li>
+<li>Sheath Blight</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Chlorantraniliprole (for stem borer)</li>
+<li>Imidacloprid (for plant hopper)</li>
+<li>Tricyclazole (for blast disease)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before transplanting</li>
+<li>NPK: 100:50:50 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🌾 धान</h2>
+
+<p><b>मिट्टी:</b> चिकनी या दोमट मिट्टी जिसमें पानी रोकने की क्षमता हो</p>
+<p><b>जलवायु:</b> 20°C – 35°C (गर्म और आर्द्र)</p>
+<p><b>पानी की आवश्यकता:</b> 5–10 सेमी तक खड़ा पानी आवश्यक</p>
+<p><b>बुवाई का मौसम:</b> खरीफ (जून – जुलाई)</p>
+<p><b>कटाई:</b> 120–150 दिन</p>
+<p><b>बीज दर:</b> 30–40 किलोग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 4–6 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>तना छेदक</li>
+<li>भूरा तना फुदका</li>
+<li>लीफ फोल्डर</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>ब्लास्ट रोग</li>
+<li>बैक्टीरियल लीफ ब्लाइट</li>
+<li>शीथ ब्लाइट</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>क्लोरेंट्रानिलिप्रोल (तना छेदक के लिए)</li>
+<li>इमिडाक्लोप्रिड (तना फुदका के लिए)</li>
+<li>ट्राइसाइक्लाजोल (ब्लास्ट रोग के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>रोपाई से पहले गोबर की खाद</li>
+<li>NPK: 100:50:50 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🌾 వరి</h2>
+
+<p><b>నేల:</b> నీటిని నిల్వ ఉంచే మట్టి లేదా లోమీ నేల</p>
+<p><b>వాతావరణం:</b> 20°C – 35°C (వెచ్చని మరియు తేమగా ఉండే వాతావరణం)</p>
+<p><b>నీటి అవసరం:</b> 5–10 సెం.మీ వరకు నిల్వ నీరు అవసరం</p>
+<p><b>విత్తే కాలం:</b> ఖరీఫ్ (జూన్ – జూలై)</p>
+<p><b>పంట కోత:</b> 120–150 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 30–40 కిలోలు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 4–6 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>స్టెమ్ బోరర్</li>
+<li>బ్రౌన్ ప్లాంట్ హాపర్</li>
+<li>లీఫ్ ఫోల్డర్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>బ్లాస్ట్ వ్యాధి</li>
+<li>బ్యాక్టీరియల్ లీఫ్ బ్లైట్</li>
+<li>షీత్ బ్లైట్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>క్లోరాంట్రానిలిప్రోల్ (స్టెమ్ బోరర్ కోసం)</li>
+<li>ఇమిడాక్లోప్రిడ్ (ప్లాంట్ హాపర్ కోసం)</li>
+<li>ట్రైసైక్లాజోల్ (బ్లాస్ట్ వ్యాధి కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>నాటే ముందు ఎఫ్.వై.ఎం (పశువుల ఎరువు)</li>
+<li>NPK: 100:50:50 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+corn:{
+
+en:`
+<h2>🌽 Corn (Maize)</h2>
+
+<p><b>Soil:</b> Well-drained fertile loamy soil (pH 5.5 – 7.5)</p>
+<p><b>Climate:</b> 18°C – 30°C</p>
+<p><b>Water Requirement:</b> Moderate irrigation every 7–10 days</p>
+<p><b>Sowing Season:</b> Kharif & Rabi</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Seed Rate:</b> 20–25 kg/hectare</p>
+<p><b>Yield:</b> 5–8 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Fall Armyworm</li>
+<li>Stem Borer</li>
+<li>Aphids</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Leaf Blight</li>
+<li>Rust</li>
+<li>Smut</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Spinosad (for armyworm)</li>
+<li>Chlorpyrifos (for stem borer)</li>
+<li>Mancozeb (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before sowing</li>
+<li>NPK: 120:60:40 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🌽 मक्का</h2>
+
+<p><b>मिट्टी:</b> उपजाऊ दोमट मिट्टी (pH 5.5 – 7.5)</p>
+<p><b>जलवायु:</b> 18°C – 30°C</p>
+<p><b>पानी की आवश्यकता:</b> हर 7–10 दिन में सिंचाई</p>
+<p><b>बुवाई का मौसम:</b> खरीफ और रबी</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>बीज दर:</b> 20–25 किलोग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 5–8 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>फॉल आर्मीवर्म</li>
+<li>तना छेदक</li>
+<li>एफिड्स</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>लीफ ब्लाइट</li>
+<li>रस्ट</li>
+<li>स्मट</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>स्पिनोसैड (आर्मीवर्म के लिए)</li>
+<li>क्लोरपायरीफॉस (तना छेदक के लिए)</li>
+<li>मैनकोजेब (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>बुवाई से पहले गोबर की खाद</li>
+<li>NPK: 120:60:40 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🌽 మొక్కజొన్న</h2>
+
+<p><b>నేల:</b> సారవంతమైన లోమీ నేల (pH 5.5 – 7.5)</p>
+<p><b>వాతావరణం:</b> 18°C – 30°C</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 7–10 రోజులకు ఒకసారి నీరు</p>
+<p><b>విత్తే కాలం:</b> ఖరీఫ్ & రబీ</p>
+<p><b>పంట కోత:</b> 90–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 20–25 కిలోలు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 5–8 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>ఫాల్ ఆర్మీవార్మ్</li>
+<li>స్టెమ్ బోరర్</li>
+<li>ఆఫిడ్స్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>లీఫ్ బ్లైట్</li>
+<li>రస్ట్</li>
+<li>స్మట్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>స్పినోసాడ్ (ఆర్మీవార్మ్ కోసం)</li>
+<li>క్లోర్పైరిఫాస్ (స్టెమ్ బోరర్ కోసం)</li>
+<li>మాంకోజెబ్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>విత్తే ముందు పశువుల ఎరువు</li>
+<li>NPK: 120:60:40 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+tomato:{
+
+en:`
+<h2>🍅 Tomato</h2>
+
+<p><b>Soil:</b> Well-drained sandy loam soil (pH 6.0 – 7.0)</p>
+<p><b>Climate:</b> 20°C – 30°C</p>
+<p><b>Water Requirement:</b> Irrigation every 5–7 days (avoid waterlogging)</p>
+<p><b>Sowing Season:</b> Year-round (depending on region)</p>
+<p><b>Harvest:</b> 60–85 days</p>
+<p><b>Seed Rate:</b> 300–400 g/hectare</p>
+<p><b>Yield:</b> 20–25 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Fruit Borer</li>
+<li>Whitefly</li>
+<li>Aphids</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Early Blight</li>
+<li>Late Blight</li>
+<li>Leaf Curl Virus</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Spinosad (for fruit borer)</li>
+<li>Imidacloprid (for whitefly & aphids)</li>
+<li>Mancozeb (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before transplanting</li>
+<li>NPK: 100:50:50 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🍅 टमाटर</h2>
+
+<p><b>मिट्टी:</b> अच्छी जल निकासी वाली बलुई दोमट मिट्टी (pH 6.0 – 7.0)</p>
+<p><b>जलवायु:</b> 20°C – 30°C</p>
+<p><b>पानी की आवश्यकता:</b> हर 5–7 दिन में सिंचाई (जलभराव से बचें)</p>
+<p><b>बुवाई का मौसम:</b> वर्ष भर (क्षेत्र के अनुसार)</p>
+<p><b>कटाई:</b> 60–85 दिन</p>
+<p><b>बीज दर:</b> 300–400 ग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 20–25 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>फल छेदक</li>
+<li>सफेद मक्खी</li>
+<li>एफिड्स</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>अर्ली ब्लाइट</li>
+<li>लेट ब्लाइट</li>
+<li>लीफ कर्ल वायरस</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>स्पिनोसैड (फल छेदक के लिए)</li>
+<li>इमिडाक्लोप्रिड (सफेद मक्खी और एफिड्स के लिए)</li>
+<li>मैनकोजेब (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>रोपाई से पहले गोबर की खाद</li>
+<li>NPK: 100:50:50 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🍅 టమోటా</h2>
+
+<p><b>నేల:</b> నీరు బయటకు వెళ్లే ఇసుక-లోమీ నేల (pH 6.0 – 7.0)</p>
+<p><b>వాతావరణం:</b> 20°C – 30°C</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 5–7 రోజులకు ఒకసారి నీరు (నీరు నిల్వ కాకుండా చూడాలి)</p>
+<p><b>విత్తే కాలం:</b> సంవత్సరం పొడవునా (ప్రాంతాన్ని బట్టి)</p>
+<p><b>పంట కోత:</b> 60–85 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 300–400 గ్రాములు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 20–25 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>ఫ్రూట్ బోరర్</li>
+<li>వైట్ ఫ్లై</li>
+<li>ఆఫిడ్స్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>ఎర్లీ బ్లైట్</li>
+<li>లేట్ బ్లైట్</li>
+<li>లీఫ్ కర్ల్ వైరస్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>స్పినోసాడ్ (ఫ్రూట్ బోరర్ కోసం)</li>
+<li>ఇమిడాక్లోప్రిడ్ (వైట్ ఫ్లై & ఆఫిడ్స్ కోసం)</li>
+<li>మాంకోజెబ్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>నాటే ముందు పశువుల ఎరువు</li>
+<li>NPK: 100:50:50 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+brinjal:{
+
+en:`
+<h2>🍆 Brinjal (Eggplant)</h2>
+
+<p><b>Soil:</b> Well-drained fertile loamy soil (pH 5.5 – 6.8)</p>
+<p><b>Climate:</b> 22°C – 32°C</p>
+<p><b>Water Requirement:</b> Irrigation every 6–8 days (avoid water stagnation)</p>
+<p><b>Sowing Season:</b> Year-round (varies by region)</p>
+<p><b>Harvest:</b> 80–100 days</p>
+<p><b>Seed Rate:</b> 400–500 g/hectare</p>
+<p><b>Yield:</b> 25–30 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Shoot and Fruit Borer</li>
+<li>Whitefly</li>
+<li>Jassids</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Phomopsis Blight</li>
+<li>Bacterial Wilt</li>
+<li>Little Leaf Disease</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Emamectin Benzoate (for fruit borer)</li>
+<li>Imidacloprid (for sucking pests)</li>
+<li>Copper Oxychloride (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before transplanting</li>
+<li>NPK: 100:60:50 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🍆 बैंगन</h2>
+
+<p><b>मिट्टी:</b> अच्छी जल निकासी वाली उपजाऊ दोमट मिट्टी (pH 5.5 – 6.8)</p>
+<p><b>जलवायु:</b> 22°C – 32°C</p>
+<p><b>पानी की आवश्यकता:</b> हर 6–8 दिन में सिंचाई (जलभराव से बचें)</p>
+<p><b>बुवाई का मौसम:</b> वर्ष भर (क्षेत्र के अनुसार)</p>
+<p><b>कटाई:</b> 80–100 दिन</p>
+<p><b>बीज दर:</b> 400–500 ग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 25–30 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>तना और फल छेदक</li>
+<li>सफेद मक्खी</li>
+<li>जैसिड</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>फोमोप्सिस ब्लाइट</li>
+<li>बैक्टीरियल विल्ट</li>
+<li>लिटिल लीफ रोग</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>इमामेक्टिन बेंजोएट (फल छेदक के लिए)</li>
+<li>इमिडाक्लोप्रिड (रस चूसने वाले कीटों के लिए)</li>
+<li>कॉपर ऑक्सीक्लोराइड (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>रोपाई से पहले गोबर की खाद</li>
+<li>NPK: 100:60:50 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🍆 వంకాయ</h2>
+
+<p><b>నేల:</b> నీరు బయటకు వెళ్లే సారవంతమైన లోమీ నేల (pH 5.5 – 6.8)</p>
+<p><b>వాతావరణం:</b> 22°C – 32°C</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 6–8 రోజులకు ఒకసారి నీరు (నీరు నిల్వ కాకుండా చూడాలి)</p>
+<p><b>విత్తే కాలం:</b> సంవత్సరం పొడవునా (ప్రాంతాన్ని బట్టి)</p>
+<p><b>పంట కోత:</b> 80–100 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 400–500 గ్రాములు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 25–30 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>షూట్ మరియు ఫ్రూట్ బోరర్</li>
+<li>వైట్ ఫ్లై</li>
+<li>జాసిడ్స్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>ఫోమోప్సిస్ బ్లైట్</li>
+<li>బ్యాక్టీరియల్ విల్ట్</li>
+<li>లిటిల్ లీఫ్ వ్యాధి</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>ఇమామెక్టిన్ బెంజోయేట్ (ఫ్రూట్ బోరర్ కోసం)</li>
+<li>ఇమిడాక్లోప్రిడ్ (రసం పీల్చే పురుగుల కోసం)</li>
+<li>కాపర్ ఆక్సీక్లోరైడ్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>నాటే ముందు పశువుల ఎరువు</li>
+<li>NPK: 100:60:50 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+onion:{
+
+en:`
+<h2>🧅 Onion</h2>
+
+<p><b>Soil:</b> Well-drained sandy loam soil (pH 6.0 – 7.5)</p>
+<p><b>Climate:</b> 13°C – 25°C</p>
+<p><b>Water Requirement:</b> Light irrigation every 7–10 days (avoid waterlogging)</p>
+<p><b>Sowing Season:</b> Rabi & Kharif</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Seed Rate:</b> 8–10 kg/hectare</p>
+<p><b>Yield:</b> 20–25 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Thrips</li>
+<li>Onion Maggot</li>
+<li>Cutworm</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Purple Blotch</li>
+<li>Downy Mildew</li>
+<li>Basal Rot</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Spinosad (for thrips)</li>
+<li>Chlorpyrifos (for maggot & cutworm)</li>
+<li>Mancozeb (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before sowing</li>
+<li>NPK: 100:50:50 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🧅 प्याज</h2>
+
+<p><b>मिट्टी:</b> अच्छी जल निकासी वाली बलुई दोमट मिट्टी (pH 6.0 – 7.5)</p>
+<p><b>जलवायु:</b> 13°C – 25°C</p>
+<p><b>पानी की आवश्यकता:</b> हर 7–10 दिन में हल्की सिंचाई (जलभराव से बचें)</p>
+<p><b>बुवाई का मौसम:</b> रबी और खरीफ</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>बीज दर:</b> 8–10 किलोग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 20–25 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>थ्रिप्स</li>
+<li>प्याज मैगॉट</li>
+<li>कटवर्म</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>पर्पल ब्लॉच</li>
+<li>डाउऩी मिल्ड्यू</li>
+<li>बेसल रोट</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>स्पिनोसैड (थ्रिप्स के लिए)</li>
+<li>क्लोरपायरीफॉस (मैगॉट और कटवर्म के लिए)</li>
+<li>मैनकोजेब (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>बुवाई से पहले गोबर की खाद</li>
+<li>NPK: 100:50:50 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🧅 ఉల్లిపాయ</h2>
+
+<p><b>నేల:</b> నీరు బయటకు వెళ్లే ఇసుక-లోమీ నేల (pH 6.0 – 7.5)</p>
+<p><b>వాతావరణం:</b> 13°C – 25°C</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 7–10 రోజులకు తక్కువ నీరు (నీరు నిల్వ కాకుండా చూడాలి)</p>
+<p><b>విత్తే కాలం:</b> రబీ & ఖరీఫ్</p>
+<p><b>పంట కోత:</b> 90–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 8–10 కిలోలు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 20–25 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>త్రిప్స్</li>
+<li>ఉల్లిపాయ మాగ్గాట్</li>
+<li>కట్‌వార్మ్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>పర్పుల్ బ్లాచ్</li>
+<li>డౌనీ మిల్డ్యూ</li>
+<li>బేసల్ రాట్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>స్పినోసాడ్ (త్రిప్స్ కోసం)</li>
+<li>క్లోర్పైరిఫాస్ (మాగ్గాట్ & కట్‌వార్మ్ కోసం)</li>
+<li>మాంకోజెబ్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>విత్తే ముందు పశువుల ఎరువు</li>
+<li>NPK: 100:50:50 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+wheat:{
+
+en:`
+<h2>🌾 Wheat</h2>
+
+<p><b>Soil:</b> Well-drained loamy or clay loam soil (pH 6.0 – 7.5)</p>
+<p><b>Climate:</b> 10°C – 25°C</p>
+<p><b>Water Requirement:</b> 4–6 irrigations during crop growth (critical stages: tillering, flowering, grain filling)</p>
+<p><b>Sowing Season:</b> Rabi (October – November)</p>
+<p><b>Harvest:</b> 110–140 days</p>
+<p><b>Seed Rate:</b> 100–125 kg/hectare</p>
+<p><b>Yield:</b> 3–5 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Termites</li>
+<li>Aphids</li>
+<li>Armyworm</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Rust (Yellow, Brown, Black)</li>
+<li>Loose Smut</li>
+<li>Powdery Mildew</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Chlorpyrifos (for termites)</li>
+<li>Imidacloprid (for aphids)</li>
+<li>Propiconazole (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before sowing</li>
+<li>NPK: 120:60:40 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🌾 गेहूं</h2>
+
+<p><b>मिट्टी:</b> अच्छी जल निकासी वाली दोमट या चिकनी दोमट मिट्टी (pH 6.0 – 7.5)</p>
+<p><b>जलवायु:</b> 10°C – 25°C</p>
+<p><b>पानी की आवश्यकता:</b> फसल अवधि में 4–6 सिंचाई (महत्वपूर्ण अवस्था: टिलरिंग, फूल, दाना भरना)</p>
+<p><b>बुवाई का मौसम:</b> रबी (अक्टूबर – नवंबर)</p>
+<p><b>कटाई:</b> 110–140 दिन</p>
+<p><b>बीज दर:</b> 100–125 किलोग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 3–5 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>दीमक</li>
+<li>एफिड्स</li>
+<li>आर्मीवर्म</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>रस्ट (पीला, भूरा, काला)</li>
+<li>लूज स्मट</li>
+<li>पाउडरी मिल्ड्यू</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>क्लोरपायरीफॉस (दीमक के लिए)</li>
+<li>इमिडाक्लोप्रिड (एफिड्स के लिए)</li>
+<li>प्रोपिकोनाजोल (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>बुवाई से पहले गोबर की खाद</li>
+<li>NPK: 120:60:40 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🌾 గోధుమ</h2>
+
+<p><b>నేల:</b> నీరు బయటకు వెళ్లే లోమీ లేదా క్లే లోమీ నేల (pH 6.0 – 7.5)</p>
+<p><b>వాతావరణం:</b> 10°C – 25°C</p>
+<p><b>నీటి అవసరం:</b> పంట పెరుగుదల సమయంలో 4–6 సార్లు నీరు (ముఖ్య దశలు: టిల్లరింగ్, పుష్పించడం, గింజ నింపడం)</p>
+<p><b>విత్తే కాలం:</b> రబీ (అక్టోబర్ – నవంబర్)</p>
+<p><b>పంట కోత:</b> 110–140 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 100–125 కిలోలు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 3–5 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>టెర్మైట్స్</li>
+<li>ఆఫిడ్స్</li>
+<li>ఆర్మీవార్మ్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>రస్ట్ (పసుపు, గోధుమ, నలుపు)</li>
+<li>లూజ్ స్మట్</li>
+<li>పౌడరీ మిల్డ్యూ</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>క్లోర్పైరిఫాస్ (టెర్మైట్స్ కోసం)</li>
+<li>ఇమిడాక్లోప్రిడ్ (ఆఫిడ్స్ కోసం)</li>
+<li>ప్రోపికోనాజోల్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>విత్తే ముందు పశువుల ఎరువు</li>
+<li>NPK: 120:60:40 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+cotton:{
+
+en:`
+<h2>🌿 Cotton</h2>
+
+<p><b>Soil:</b> Deep black cotton soil (well-drained, pH 6.0 – 8.0)</p>
+<p><b>Climate:</b> 21°C – 30°C (warm climate)</p>
+<p><b>Water Requirement:</b> Moderate irrigation every 10–15 days (avoid waterlogging)</p>
+<p><b>Sowing Season:</b> Kharif (June – July)</p>
+<p><b>Harvest:</b> 150–180 days</p>
+<p><b>Seed Rate:</b> 15–20 kg/hectare (hybrid)</p>
+<p><b>Yield:</b> 2–3 tons/hectare (lint yield varies)</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Bollworm</li>
+<li>Whitefly</li>
+<li>Aphids</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Wilt</li>
+<li>Leaf Curl Virus</li>
+<li>Root Rot</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Emamectin Benzoate (for bollworm)</li>
+<li>Imidacloprid (for sucking pests)</li>
+<li>Carbendazim (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before sowing</li>
+<li>NPK: 100:50:50 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🌿 कपास</h2>
+
+<p><b>मिट्टी:</b> गहरी काली कपास मिट्टी (अच्छी जल निकासी, pH 6.0 – 8.0)</p>
+<p><b>जलवायु:</b> 21°C – 30°C (गर्म जलवायु)</p>
+<p><b>पानी की आवश्यकता:</b> हर 10–15 दिन में मध्यम सिंचाई (जलभराव से बचें)</p>
+<p><b>बुवाई का मौसम:</b> खरीफ (जून – जुलाई)</p>
+<p><b>कटाई:</b> 150–180 दिन</p>
+<p><b>बीज दर:</b> 15–20 किलोग्राम/हेक्टेयर (हाइब्रिड)</p>
+<p><b>उपज:</b> 2–3 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>बॉलवर्म</li>
+<li>सफेद मक्खी</li>
+<li>एफिड्स</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>विल्ट</li>
+<li>लीफ कर्ल वायरस</li>
+<li>रूट रोट</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>इमामेक्टिन बेंजोएट (बॉलवर्म के लिए)</li>
+<li>इमिडाक्लोप्रिड (रस चूसने वाले कीटों के लिए)</li>
+<li>कार्बेन्डाजिम (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>बुवाई से पहले गोबर की खाद</li>
+<li>NPK: 100:50:50 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🌿 పత్తి</h2>
+
+<p><b>నేల:</b> లోతైన నల్ల నేల (నీరు బయటకు వెళ్లే విధంగా, pH 6.0 – 8.0)</p>
+<p><b>వాతావరణం:</b> 21°C – 30°C (వెచ్చని వాతావరణం)</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 10–15 రోజులకు మితమైన నీరు (నీరు నిల్వ కాకుండా చూడాలి)</p>
+<p><b>విత్తే కాలం:</b> ఖరీఫ్ (జూన్ – జూలై)</p>
+<p><b>పంట కోత:</b> 150–180 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 15–20 కిలోలు/హెక్టారు (హైబ్రిడ్)</p>
+<p><b>ఉత్పత్తి:</b> 2–3 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>బోల్‌వార్మ్</li>
+<li>వైట్ ఫ్లై</li>
+<li>ఆఫిడ్స్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>విల్ట్</li>
+<li>లీఫ్ కర్ల్ వైరస్</li>
+<li>రూట్ రాట్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>ఇమామెక్టిన్ బెంజోయేట్ (బోల్‌వార్మ్ కోసం)</li>
+<li>ఇమిడాక్లోప్రిడ్ (రసం పీల్చే పురుగుల కోసం)</li>
+<li>కార్బెండాజిమ్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>విత్తే ముందు పశువుల ఎరువు</li>
+<li>NPK: 100:50:50 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+cabbage:{
+
+en:`
+<h2>🥬 Cabbage</h2>
+
+<p><b>Soil:</b> Well-drained fertile loamy soil (pH 6.0 – 7.5)</p>
+<p><b>Climate:</b> 15°C – 25°C (cool climate)</p>
+<p><b>Water Requirement:</b> Irrigation every 7–10 days (maintain consistent moisture)</p>
+<p><b>Sowing Season:</b> Rabi & Winter season</p>
+<p><b>Harvest:</b> 70–100 days</p>
+<p><b>Seed Rate:</b> 500–600 g/hectare</p>
+<p><b>Yield:</b> 25–35 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Diamondback Moth</li>
+<li>Cabbage Worm</li>
+<li>Aphids</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Black Rot</li>
+<li>Downy Mildew</li>
+<li>Club Root</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Spinosad (for caterpillars)</li>
+<li>Imidacloprid (for aphids)</li>
+<li>Mancozeb (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before transplanting</li>
+<li>NPK: 120:60:60 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🥬 पत्ता गोभी</h2>
+
+<p><b>मिट्टी:</b> अच्छी जल निकासी वाली उपजाऊ दोमट मिट्टी (pH 6.0 – 7.5)</p>
+<p><b>जलवायु:</b> 15°C – 25°C (ठंडी जलवायु)</p>
+<p><b>पानी की आवश्यकता:</b> हर 7–10 दिन में सिंचाई (नमी बनाए रखें)</p>
+<p><b>बुवाई का मौसम:</b> रबी और सर्दी का मौसम</p>
+<p><b>कटाई:</b> 70–100 दिन</p>
+<p><b>बीज दर:</b> 500–600 ग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 25–35 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>डायमंडबैक मॉथ</li>
+<li>पत्ता गोभी की सुंडी</li>
+<li>एफिड्स</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>ब्लैक रोट</li>
+<li>डाउऩी मिल्ड्यू</li>
+<li>क्लब रूट</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>स्पिनोसैड (इल्ली के लिए)</li>
+<li>इमिडाक्लोप्रिड (एफिड्स के लिए)</li>
+<li>मैनकोजेब (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>रोपाई से पहले गोबर की खाद</li>
+<li>NPK: 120:60:60 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🥬 క్యాబేజీ</h2>
+
+<p><b>నేల:</b> నీరు బయటకు వెళ్లే సారవంతమైన లోమీ నేల (pH 6.0 – 7.5)</p>
+<p><b>వాతావరణం:</b> 15°C – 25°C (చల్లని వాతావరణం)</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 7–10 రోజులకు నీరు (తేమ నిల్వ ఉండాలి)</p>
+<p><b>విత్తే కాలం:</b> రబీ & శీతాకాలం</p>
+<p><b>పంట కోత:</b> 70–100 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 500–600 గ్రాములు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 25–35 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>డైమండ్‌బ్యాక్ మోత్</li>
+<li>క్యాబేజీ వర్మ్</li>
+<li>ఆఫిడ్స్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>బ్లాక్ రాట్</li>
+<li>డౌనీ మిల్డ్యూ</li>
+<li>క్లబ్ రూట్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>స్పినోసాడ్ (పురుగుల కోసం)</li>
+<li>ఇమిడాక్లోప్రిడ్ (ఆఫిడ్స్ కోసం)</li>
+<li>మాంకోజెబ్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>నాటే ముందు పశువుల ఎరువు</li>
+<li>NPK: 120:60:60 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+carrot:{
+
+en:`
+<h2>🥕 Carrot</h2>
+
+<p><b>Soil:</b> Loose, deep, well-drained sandy loam soil (pH 6.0 – 7.0)</p>
+<p><b>Climate:</b> 16°C – 25°C (cool climate)</p>
+<p><b>Water Requirement:</b> Light irrigation every 5–7 days (avoid water stagnation)</p>
+<p><b>Sowing Season:</b> Rabi (October – December)</p>
+<p><b>Harvest:</b> 70–90 days</p>
+<p><b>Seed Rate:</b> 4–6 kg/hectare</p>
+<p><b>Yield:</b> 20–30 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Aphids</li>
+<li>Cutworm</li>
+<li>Root Fly</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Alternaria Leaf Blight</li>
+<li>Powdery Mildew</li>
+<li>Root Rot</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Imidacloprid (for aphids)</li>
+<li>Chlorpyrifos (for cutworm)</li>
+<li>Mancozeb (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>Well-decomposed FYM before sowing</li>
+<li>NPK: 60:40:40 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🥕 गाजर</h2>
+
+<p><b>मिट्टी:</b> ढीली, गहरी, अच्छी जल निकासी वाली बलुई दोमट मिट्टी (pH 6.0 – 7.0)</p>
+<p><b>जलवायु:</b> 16°C – 25°C (ठंडी जलवायु)</p>
+<p><b>पानी की आवश्यकता:</b> हर 5–7 दिन में हल्की सिंचाई (जलभराव से बचें)</p>
+<p><b>बुवाई का मौसम:</b> रबी (अक्टूबर – दिसंबर)</p>
+<p><b>कटाई:</b> 70–90 दिन</p>
+<p><b>बीज दर:</b> 4–6 किलोग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 20–30 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>एफिड्स</li>
+<li>कटवर्म</li>
+<li>रूट फ्लाई</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>अल्टरनेरिया लीफ ब्लाइट</li>
+<li>पाउडरी मिल्ड्यू</li>
+<li>रूट रोट</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>इमिडाक्लोप्रिड (एफिड्स के लिए)</li>
+<li>क्लोरपायरीफॉस (कटवर्म के लिए)</li>
+<li>मैनकोजेब (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>बुवाई से पहले अच्छी तरह सड़ी हुई गोबर की खाद</li>
+<li>NPK: 60:40:40 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🥕 క్యారెట్</h2>
+
+<p><b>నేల:</b> మెత్తగా, లోతుగా, నీరు బయటకు వెళ్లే ఇసుక-లోమీ నేల (pH 6.0 – 7.0)</p>
+<p><b>వాతావరణం:</b> 16°C – 25°C (చల్లని వాతావరణం)</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 5–7 రోజులకు తక్కువ నీరు (నీరు నిల్వ కాకుండా చూడాలి)</p>
+<p><b>విత్తే కాలం:</b> రబీ (అక్టోబర్ – డిసెంబర్)</p>
+<p><b>పంట కోత:</b> 70–90 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 4–6 కిలోలు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 20–30 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>ఆఫిడ్స్</li>
+<li>కట్‌వార్మ్</li>
+<li>రూట్ ఫ్లై</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>అల్టర్నేరియా లీఫ్ బ్లైట్</li>
+<li>పౌడరీ మిల్డ్యూ</li>
+<li>రూట్ రాట్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>ఇమిడాక్లోప్రిడ్ (ఆఫిడ్స్ కోసం)</li>
+<li>క్లోర్పైరిఫాస్ (కట్‌వార్మ్ కోసం)</li>
+<li>మాంకోజెబ్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>విత్తే ముందు బాగా కుళ్లిన పశువుల ఎరువు</li>
+<li>NPK: 60:40:40 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+potato:{
+
+en:`
+<h2>🥔 Potato</h2>
+
+<p><b>Soil:</b> Well-drained sandy loam soil rich in organic matter (pH 5.5 – 6.5)</p>
+<p><b>Climate:</b> 15°C – 25°C (cool climate)</p>
+<p><b>Water Requirement:</b> Irrigation every 7–10 days (critical stages: tuber formation & bulking)</p>
+<p><b>Sowing Season:</b> Rabi (October – November)</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Seed Rate:</b> 2,000–2,500 kg/hectare (seed tubers)</p>
+<p><b>Yield:</b> 20–30 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Potato Tuber Moth</li>
+<li>Aphids</li>
+<li>Cutworm</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Late Blight</li>
+<li>Early Blight</li>
+<li>Common Scab</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Chlorantraniliprole (for tuber moth)</li>
+<li>Imidacloprid (for aphids)</li>
+<li>Mancozeb (for blight diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>Well-decomposed FYM before planting</li>
+<li>NPK: 150:80:100 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🥔 आलू</h2>
+
+<p><b>मिट्टी:</b> जैविक पदार्थों से भरपूर अच्छी जल निकासी वाली बलुई दोमट मिट्टी (pH 5.5 – 6.5)</p>
+<p><b>जलवायु:</b> 15°C – 25°C (ठंडी जलवायु)</p>
+<p><b>पानी की आवश्यकता:</b> हर 7–10 दिन में सिंचाई (महत्वपूर्ण अवस्था: कंद बनना और बढ़ना)</p>
+<p><b>बुवाई का मौसम:</b> रबी (अक्टूबर – नवंबर)</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>बीज दर:</b> 2,000–2,500 किलोग्राम/हेक्टेयर (बीज कंद)</p>
+<p><b>उपज:</b> 20–30 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>आलू कंद कीट</li>
+<li>एफिड्स</li>
+<li>कटवर्म</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>लेट ब्लाइट</li>
+<li>अर्ली ब्लाइट</li>
+<li>कॉमन स्कैब</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>क्लोरेंट्रानिलिप्रोल (कंद कीट के लिए)</li>
+<li>इमिडाक्लोप्रिड (एफिड्स के लिए)</li>
+<li>मैनकोजेब (ब्लाइट रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>रोपाई से पहले अच्छी तरह सड़ी हुई गोबर की खाद</li>
+<li>NPK: 150:80:100 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🥔 బంగాళదుంప</h2>
+
+<p><b>నేల:</b> సేంద్రియ పదార్థాలు ఎక్కువగా ఉన్న ఇసుక-లోమీ నేల (pH 5.5 – 6.5)</p>
+<p><b>వాతావరణం:</b> 15°C – 25°C (చల్లని వాతావరణం)</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 7–10 రోజులకు నీరు (ముఖ్య దశలు: కంద ఏర్పడం & పెరుగుదల)</p>
+<p><b>విత్తే కాలం:</b> రబీ (అక్టోబర్ – నవంబర్)</p>
+<p><b>పంట కోత:</b> 90–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 2,000–2,500 కిలోలు/హెక్టారు (కందలు)</p>
+<p><b>ఉత్పత్తి:</b> 20–30 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>పొటాటో ట్యూబర్ మోత్</li>
+<li>ఆఫిడ్స్</li>
+<li>కట్‌వార్మ్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>లేట్ బ్లైట్</li>
+<li>ఎర్లీ బ్లైట్</li>
+<li>కామన్ స్కాబ్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>క్లోరాంట్రానిలిప్రోల్ (ట్యూబర్ మోత్ కోసం)</li>
+<li>ఇమిడాక్లోప్రిడ్ (ఆఫిడ్స్ కోసం)</li>
+<li>మాంకోజెబ్ (బ్లైట్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>నాటే ముందు బాగా కుళ్లిన పశువుల ఎరువు</li>
+<li>NPK: 150:80:100 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+chilli:{
+
+en:`
+<h2>🌶 Chilli</h2>
+
+<p><b>Soil:</b> Well-drained sandy loam soil rich in organic matter (pH 6.0 – 7.0)</p>
+<p><b>Climate:</b> 20°C – 30°C (warm climate)</p>
+<p><b>Water Requirement:</b> Irrigation every 7–10 days (avoid waterlogging)</p>
+<p><b>Sowing Season:</b> Kharif & Rabi (varies by region)</p>
+<p><b>Harvest:</b> 75–120 days</p>
+<p><b>Seed Rate:</b> 1–1.5 kg/hectare</p>
+<p><b>Yield:</b> 2–3 tons/hectare (dry chilli)</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Thrips</li>
+<li>Aphids</li>
+<li>Fruit Borer</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Anthracnose</li>
+<li>Powdery Mildew</li>
+<li>Leaf Curl Virus</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Spinosad (for fruit borer)</li>
+<li>Imidacloprid (for sucking pests)</li>
+<li>Carbendazim (for fungal diseases)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>FYM before transplanting</li>
+<li>NPK: 100:50:50 kg/hectare</li>
+</ul>
+`,
+
+hi:`
+<h2>🌶 मिर्च</h2>
+
+<p><b>मिट्टी:</b> जैविक पदार्थों से भरपूर अच्छी जल निकासी वाली बलुई दोमट मिट्टी (pH 6.0 – 7.0)</p>
+<p><b>जलवायु:</b> 20°C – 30°C (गर्म जलवायु)</p>
+<p><b>पानी की आवश्यकता:</b> हर 7–10 दिन में सिंचाई (जलभराव से बचें)</p>
+<p><b>बुवाई का मौसम:</b> खरीफ और रबी (क्षेत्र के अनुसार)</p>
+<p><b>कटाई:</b> 75–120 दिन</p>
+<p><b>बीज दर:</b> 1–1.5 किलोग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 2–3 टन/हेक्टेयर (सूखी मिर्च)</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>थ्रिप्स</li>
+<li>एफिड्स</li>
+<li>फल छेदक</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>एन्थ्रेक्नोज</li>
+<li>पाउडरी मिल्ड्यू</li>
+<li>लीफ कर्ल वायरस</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>स्पिनोसैड (फल छेदक के लिए)</li>
+<li>इमिडाक्लोप्रिड (रस चूसने वाले कीटों के लिए)</li>
+<li>कार्बेन्डाजिम (फफूंदी रोगों के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>रोपाई से पहले गोबर की खाद</li>
+<li>NPK: 100:50:50 किग्रा/हेक्टेयर</li>
+</ul>
+`,
+
+te:`
+<h2>🌶 మిర్చి</h2>
+
+<p><b>నేల:</b> సేంద్రియ పదార్థాలు ఎక్కువగా ఉన్న ఇసుక-లోమీ నేల (pH 6.0 – 7.0)</p>
+<p><b>వాతావరణం:</b> 20°C – 30°C (వెచ్చని వాతావరణం)</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 7–10 రోజులకు నీరు (నీరు నిల్వ కాకుండా చూడాలి)</p>
+<p><b>విత్తే కాలం:</b> ఖరీఫ్ & రబీ (ప్రాంతాన్ని బట్టి)</p>
+<p><b>పంట కోత:</b> 75–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 1–1.5 కిలోలు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 2–3 టన్నులు/హెక్టారు (ఎండ మిర్చి)</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>త్రిప్స్</li>
+<li>ఆఫిడ్స్</li>
+<li>ఫ్రూట్ బోరర్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>ఆంత్రాక్నోస్</li>
+<li>పౌడరీ మిల్డ్యూ</li>
+<li>లీఫ్ కర్ల్ వైరస్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>స్పినోసాడ్ (ఫ్రూట్ బోరర్ కోసం)</li>
+<li>ఇమిడాక్లోప్రిడ్ (రసం పీల్చే పురుగుల కోసం)</li>
+<li>కార్బెండాజిమ్ (ఫంగస్ వ్యాధుల కోసం)</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>నాటే ముందు పశువుల ఎరువు</li>
+<li>NPK: 100:50:50 కిలోలు/హెక్టారు</li>
+</ul>
+`
+},
+peas: {
+
+en:`
+<h2>🟢 Green Peas</h2>
+
+<p><b>Soil:</b> Well-drained loamy soil (pH 6.0 – 7.5)</p>
+<p><b>Climate:</b> Cool season crop, 10°C – 25°C</p>
+<p><b>Water Requirement:</b> Light irrigation every 6–8 days. Avoid waterlogging.</p>
+<p><b>Sowing Time:</b> October – November (Rabi season)</p>
+<p><b>Harvest:</b> 60–75 days after sowing</p>
+<p><b>Seed Rate:</b> 60–80 kg/hectare</p>
+<p><b>Yield:</b> 8–12 tons/hectare</p>
+
+<h3>Major Pests:</h3>
+<ul>
+<li>Pod Borer</li>
+<li>Aphids</li>
+<li>Leaf Miner</li>
+</ul>
+
+<h3>Major Diseases:</h3>
+<ul>
+<li>Powdery Mildew</li>
+<li>Downy Mildew</li>
+<li>Rust</li>
+<li>Root Rot</li>
+</ul>
+
+<h3>Pesticides / Control Measures:</h3>
+<ul>
+<li>Neem Oil Spray (organic control for aphids)</li>
+<li>Spinosad (for pod borer)</li>
+<li>Mancozeb (for fungal diseases)</li>
+<li>Carbendazim (for root rot control)</li>
+</ul>
+
+<h3>Fertilizer Recommendation:</h3>
+<ul>
+<li>Farm Yard Manure (FYM) before sowing</li>
+<li>NPK: 20:60:40 kg per hectare</li>
+</ul>
+
+<h3>Special Care:</h3>
+<ul>
+<li>Provide support (staking) for climbing varieties</li>
+<li>Avoid excess nitrogen fertilizer</li>
+<li>Ensure proper drainage</li>
+</ul>
+`,
+
+hi:`
+<h2>🟢 मटर</h2>
+
+<p><b>मिट्टी:</b> अच्छी जल निकासी वाली दोमट मिट्टी (pH 6.0 – 7.5)</p>
+<p><b>जलवायु:</b> ठंडा मौसम, 10°C – 25°C</p>
+<p><b>पानी की आवश्यकता:</b> हल्की सिंचाई हर 6–8 दिन। जलभराव से बचें।</p>
+<p><b>बुवाई का समय:</b> अक्टूबर – नवंबर (रबी मौसम)</p>
+<p><b>कटाई:</b> बुवाई के 60–75 दिन बाद</p>
+<p><b>बीज दर:</b> 60–80 किलोग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 8–12 टन/हेक्टेयर</p>
+
+<h3>मुख्य कीट:</h3>
+<ul>
+<li>पॉड बोरर</li>
+<li>एफिड्स</li>
+<li>लीफ माइनर</li>
+</ul>
+
+<h3>मुख्य रोग:</h3>
+<ul>
+<li>पाउडरी मिल्ड्यू</li>
+<li>डाउनइ मिल्ड्यू</li>
+<li>रस</li>
+<li>रूट रॉट</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>नीम का तेल स्प्रे (एफिड्स के लिए जैविक नियंत्रण)</li>
+<li>स्पिनोसैड (पॉड बोरर के लिए)</li>
+<li>मैनकोज़ेब (फफूंदी रोगों के लिए)</li>
+<li>कार्बेन्डाजिम (रूट रॉट नियंत्रण के लिए)</li>
+</ul>
+
+<h3>उर्वरक सिफारिश:</h3>
+<ul>
+<li>बुवाई से पहले गोबर की खाद</li>
+<li>NPK: 20:60:40 किग्रा/हेक्टेयर</li>
+</ul>
+
+<h3>विशेष देखभाल:</h3>
+<ul>
+<li>लंबी किस्मों के लिए सहारा दें (स्टेकिंग)</li>
+<li>अधिक नाइट्रोजन उर्वरक से बचें</li>
+<li>उचित जल निकासी सुनिश्चित करें</li>
+</ul>
+`,
+
+te:`
+<h2>🟢 బఠానీ</h2>
+
+<p><b>నేల:</b> మంచి నీటి గుండా ఉండే లోమీ నేల (pH 6.0 – 7.5)</p>
+<p><b>వాతావరణం:</b> చల్లని కాలపు పంట, 10°C – 25°C</p>
+<p><b>నీటి అవసరం:</b> ప్రతి 6–8 రోజులకు తేలికపాటి జలీకరణ. నీరు నిల్వ కాకుండా చూడాలి.</p>
+<p><b>విత్తే సమయం:</b> అక్టోబర్ – నవంబర్ (రబీ సీజన్)</p>
+<p><b>పంట కోత:</b> విత్తిన 60–75 రోజుల తర్వాత</p>
+<p><b>విత్తన పరిమాణం:</b> 60–80 కిలోలు/హెక్టారు</p>
+<p><b>ఉత్పత్తి:</b> 8–12 టన్నులు/హెక్టారు</p>
+
+<h3>ప్రధాన పురుగులు:</h3>
+<ul>
+<li>పాడ్ బోరర్</li>
+<li>ఆఫిడ్స్</li>
+<li>లీఫ్ మైనర్</li>
+</ul>
+
+<h3>ప్రధాన వ్యాధులు:</h3>
+<ul>
+<li>పౌడరీ మిల్డ్యూ</li>
+<li>డౌన్‌y మిల్డ్యూ</li>
+<li>రస్ట్</li>
+<li>రూట్ రాట్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>ఆఫిడ్స్ కోసం నిమ్ ఆయిల్ స్ప్రే (సేంద్రియ నియంత్రణ)</li>
+<li>పాడ్ బోరర్ కోసం స్పినోసాడ్</li>
+<li>ఫంగస్ వ్యాధుల కోసం మాన్కోజెబ్</li>
+<li>రూట్ రాట్ నియంత్రణ కోసం కార్బెండాజిమ్</li>
+</ul>
+
+<h3>ఎరువుల సిఫార్సు:</h3>
+<ul>
+<li>విత్తే ముందు ఎఫ్‌వైఎం (పశువుల ఎరువు)</li>
+<li>NPK: 20:60:40 కిలోలు/హెక్టారు</li>
+</ul>
+
+<h3>ప్రత్యేక జాగ్రత్తలు:</h3>
+<ul>
+<li>ఎత్తైన किस్మల కోసం మద్దతు (స్టేకింగ్)</li>
+<li>అధిక నత్రజని ఎరువుల నివారణ</li>
+<li>సరైన నీటి నిల్వ నిర్ధారించండి</li>
+</ul>
+`
+},
+radish: {
+
+en:`
+<h2>🌱 Radish</h2>
+
+<p><b>Soil:</b> Sandy loam soil</p>
+<p><b>Climate:</b> 10–25°C</p>
+<p><b>Water:</b> Light irrigation every 4–5 days</p>
+<p><b>Harvest:</b> 30–45 days</p>
+<p><b>Yield:</b> 10–15 tons/hectare</p>
+
+<h3>Pests:</h3>
+<ul>
+<li>Aphids</li>
+<li>Cutworms</li>
+</ul>
+
+<h3>Diseases:</h3>
+<ul>
+<li>White Rust</li>
+<li>Downy Mildew</li>
+<li>Root Rot</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Neem oil spray</li>
+<li>Mancozeb (for fungal diseases)</li>
+<li>Chlorpyrifos (for soil pests)</li>
+</ul>
+`,
+
+hi:`
+<h2>🌱 मूली</h2>
+
+<p><b>मिट्टी:</b> दोमट या रेतीली दोमट मिट्टी</p>
+<p><b>जलवायु:</b> 10–25°C</p>
+<p><b>पानी:</b> हर 4–5 दिन हल्की सिंचाई</p>
+<p><b>कटाई:</b> 30–45 दिन</p>
+<p><b>उपज:</b> 10–15 टन/हेक्टेयर</p>
+
+<h3>कीट:</h3>
+<ul>
+<li>एफिड्स</li>
+<li>कटवर्म</li>
+</ul>
+
+<h3>रोग:</h3>
+<ul>
+<li>व्हाइट रस्ट</li>
+<li>डाउनइ मिल्ड्यू</li>
+<li>रूट रॉट</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>नीम का तेल स्प्रे</li>
+<li>मैनकोज़ेब (फफूंदी रोगों के लिए)</li>
+<li>क्लोरपायरीफॉस (मिट्टी की कीटों के लिए)</li>
+</ul>
+`,
+
+te:`
+<h2>🌱 ముల్లంగి</h2>
+
+<p><b>నేల:</b> sandy loam నేల</p>
+<p><b>వాతావరణం:</b> 10–25°C</p>
+<p><b>నీరు:</b> ప్రతి 4–5 రోజులకు తేలికపాటి జలీకరణ</p>
+<p><b>కత్తిరింపు:</b> 30–45 రోజులు</p>
+<p><b>ఉత్పత్తి:</b> 10–15 టన్నులు/హెక్టారు</p>
+
+<h3>పురుగులు:</h3>
+<ul>
+<li>ఆఫిడ్స్</li>
+<li>కట్‌వార్మ్స్</li>
+</ul>
+
+<h3>వ్యాధులు:</h3>
+<ul>
+<li>వైట్ రస్ట్</li>
+<li>డౌని మిల్డ్యూ</li>
+<li>రూట్ రాట్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>నిమ్ ఆయిల్ స్ప్రే</li>
+<li>ఫంగస్ వ్యాధుల కోసం మాన్కోజెబ్</li>
+<li>మట్టి పురుగుల కోసం క్లోర్పైరిఫాస్</li>
+</ul>
+`
+},
+pumpkin: {
+
+en:`
+<h2>🎃 Pumpkin</h2>
+
+<p><b>Soil:</b> Well-drained loamy soil</p>
+<p><b>Climate:</b> 20–30°C</p>
+<p><b>Water:</b> Moderate irrigation every 5–7 days</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Yield:</b> 20–30 tons/hectare</p>
+
+<h3>Pests:</h3>
+<ul>
+<li>Fruit Fly</li>
+<li>Red Pumpkin Beetle</li>
+<li>Aphids</li>
+</ul>
+
+<h3>Diseases:</h3>
+<ul>
+<li>Powdery Mildew</li>
+<li>Downy Mildew</li>
+<li>Mosaic Virus</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Imidacloprid (for aphids)</li>
+<li>Spinosad (for fruit fly)</li>
+<li>Sulphur spray (for mildew)</li>
+</ul>
+`,
+
+hi:`
+<h2>🎃 कद्दू</h2>
+
+<p><b>मिट्टी:</b> अच्छी नाली वाली दोमट मिट्टी</p>
+<p><b>जलवायु:</b> 20–30°C</p>
+<p><b>पानी:</b> हर 5–7 दिन मध्यम सिंचाई</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>उपज:</b> 20–30 टन/हेक्टेयर</p>
+
+<h3>कीट:</h3>
+<ul>
+<li>फल मक्खी</li>
+<li>लाल कद्दू बीटल</li>
+<li>एफिड्स</li>
+</ul>
+
+<h3>रोग:</h3>
+<ul>
+<li>पाउडरी मिल्ड्यू</li>
+<li>डाउनइ मिल्ड्यू</li>
+<li>मोज़ेक वायरस</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>इमिडाक्लोप्रिड (एफिड्स के लिए)</li>
+<li>स्पिनोसेड (फल मक्खी के लिए)</li>
+<li>सल्फर स्प्रे (मिल्ड्यू के लिए)</li>
+</ul>
+`,
+
+te:`
+<h2>🎃 గుమ్మడికాయ</h2>
+
+<p><b>నేల:</b> బాగా డ్రైనేజీ కలిగిన లోమీ నేల</p>
+<p><b>వాతావరణం:</b> 20–30°C</p>
+<p><b>నీరు:</b> ప్రతి 5–7 రోజులకు మోస్తరు జలీకరణ</p>
+<p><b>కత్తిరింపు:</b> 90–120 రోజులు</p>
+<p><b>ఉత్పత్తి:</b> 20–30 టన్నులు/హెక్టారు</p>
+
+<h3>పురుగులు:</h3>
+<ul>
+<li>ఫ్రూట్ ఫ్లై</li>
+<li>రెడ్ పంప్కిన్ బీటిల్</li>
+<li>ఆఫిడ్స్</li>
+</ul>
+
+<h3>వ్యాధులు:</h3>
+<ul>
+<li>పౌడరీ మిల్డ్యూ</li>
+<li>డౌని మిల్డ్యూ</li>
+<li>మోసాయిక్ వైరస్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>ఆఫిడ్స్ కోసం ఇమిడాక్లోప్రిడ్</li>
+<li>ఫ్రూట్ ఫ్లై కోసం స్పినోసాడ్</li>
+<li>మిల్డ్యూ కోసం సల్ఫర్ స్ప్రే</li>
+</ul>
+`
+},
+beans: {
+
+en:`
+<h2>🫘 Beans</h2>
+
+<p><b>Soil:</b> Well-drained sandy loam</p>
+<p><b>Climate:</b> 18–30°C</p>
+<p><b>Water:</b> Moderate irrigation every 5–6 days</p>
+<p><b>Harvest:</b> 50–60 days</p>
+<p><b>Yield:</b> 10–12 tons/hectare</p>
+
+<h3>Pests:</h3>
+<ul>
+<li>Pod Borer</li>
+<li>Aphids</li>
+<li>Bean Fly</li>
+</ul>
+
+<h3>Diseases:</h3>
+<ul>
+<li>Anthracnose</li>
+<li>Rust</li>
+<li>Mosaic Virus</li>
+</ul>
+
+<h3>Pesticides / Control:</h3>
+<ul>
+<li>Spinosad (for pod borer)</li>
+<li>Imidacloprid (for aphids)</li>
+<li>Carbendazim (for fungal diseases)</li>
+</ul>
+`,
+
+hi:`
+<h2>🫘 बीन्स</h2>
+
+<p><b>मिट्टी:</b> अच्छी नाली वाली दोमट मिट्टी</p>
+<p><b>जलवायु:</b> 18–30°C</p>
+<p><b>पानी:</b> हर 5–6 दिन मध्यम सिंचाई</p>
+<p><b>कटाई:</b> 50–60 दिन</p>
+<p><b>उपज:</b> 10–12 टन/हेक्टेयर</p>
+
+<h3>कीट:</h3>
+<ul>
+<li>पॉड बोरर</li>
+<li>एफिड्स</li>
+<li>बीन्स फ्लाई</li>
+</ul>
+
+<h3>रोग:</h3>
+<ul>
+<li>एंथ्रैक्नोज़</li>
+<li>रस्टी</li>
+<li>मोज़ेक वायरस</li>
+</ul>
+
+<h3>कीटनाशक / नियंत्रण:</h3>
+<ul>
+<li>स्पिनोसेड (पॉड बोरर के लिए)</li>
+<li>इमिडाक्लोप्रिड (एफिड्स के लिए)</li>
+<li>कार्बेन्डाजिम (फंगल रोगों के लिए)</li>
+</ul>
+`,
+
+te:`
+<h2>🫘 బీన్స్</h2>
+
+<p><b>నేల:</b> బాగా డ్రైనేజీ కలిగిన స్యాండి లోమ్</p>
+<p><b>వాతావరణం:</b> 18–30°C</p>
+<p><b>నీరు:</b> ప్రతి 5–6 రోజులకు మోస్తరు జలీకరణ</p>
+<p><b>కత్తిరింపు:</b> 50–60 రోజులు</p>
+<p><b>ఉత్పత్తి:</b> 10–12 టన్నులు/హెక్టారు</p>
+
+<h3>పురుగులు:</h3>
+<ul>
+<li>పాడ్ బోరర్</li>
+<li>ఆఫిడ్స్</li>
+<li>బీన్ ఫ్లై</li>
+</ul>
+
+<h3>వ్యాధులు:</h3>
+<ul>
+<li>అంత్రాక్నోస్</li>
+<li>రస్ట్</li>
+<li>మోసాయిక్ వైరస్</li>
+</ul>
+
+<h3>పురుగుమందులు / నియంత్రణ:</h3>
+<ul>
+<li>పాడ్ బోరర్ కోసం స్పినోసాడ్</li>
+<li>ఆఫిడ్స్ కోసం ఇమిడాక్లోప్రిడ్</li>
+<li>ఫంగల్ వ్యాధుల కోసం కార్బెండాజిమ్</li>
+</ul>
+`
+},
+garlic: {
+
+en:`
+<h2>🧄 Garlic</h2>
+<p><b>Soil:</b> Loamy soil</p>
+<p><b>Climate:</b> 12–25°C</p>
+<p><b>Water:</b> Moderate irrigation</p>
+<p><b>Harvest:</b> 120–150 days</p>
+<p><b>Yield:</b> 8–10 tons/hectare</p>
+
+<h3>Pests:</h3>
+<ul>
+<li>Thrips</li>
+</ul>
+
+<h3>Diseases:</h3>
+<ul>
+<li>White Rot</li>
+</ul>
+
+<h3>Pesticides:</h3>
+<ul>
+<li>Carbendazim</li>
+</ul>
+`,
+
+hi:`
+<h2>🧄 लहसुन</h2>
+<p><b>मिट्टी:</b> दोमट मिट्टी</p>
+<p><b>जलवायु:</b> 12–25°C</p>
+<p><b>पानी:</b> मध्यम सिंचाई</p>
+<p><b>कटाई:</b> 120–150 दिन</p>
+<p><b>उपज:</b> 8–10 टन/हेक्टेयर</p>
+
+<h3>कीट:</h3>
+<ul>
+<li>थ्रिप्स</li>
+</ul>
+
+<h3>रोग:</h3>
+<ul>
+<li>व्हाइट रॉट</li>
+</ul>
+
+<h3>कीटनाशक:</h3>
+<ul>
+<li>कार्बेन्डाजिम</li>
+</ul>
+`,
+
+te:`
+<h2>🧄 వెల్లులి</h2>
+<p><b>మట్టి:</b> లోమీ నేల</p>
+<p><b>వాతావరణం:</b> 12–25°C</p>
+<p><b>నీరు:</b> మోస్తరు జలీకరణ</p>
+<p><b>కత్తిరింపు:</b> 120–150 రోజులు</p>
+<p><b>ఉత్పత్తి:</b> 8–10 టన్నులు/హెక్టారు</p>
+
+<h3>పురుగులు:</h3>
+<ul>
+<li>త్రిప్స్</li>
+</ul>
+
+<h3>వ్యాధులు:</h3>
+<ul>
+<li>వైట్ రాట్</li>
+</ul>
+
+<h3>పురుగుమందులు:</h3>
+<ul>
+<li>కార్బెండాజిమ్</li>
+</ul>
+`
+},
+ladyfinger: {
+
+en:`
+<h2>🌿 Lady Finger (Okra)</h2>
+<p><b>Soil:</b> Well-drained loam</p>
+<p><b>Climate:</b> 25–35°C</p>
+<p><b>Water:</b> Every 4–6 days</p>
+<p><b>Harvest:</b> 50–60 days</p>
+<p><b>Yield:</b> 10–15 tons/hectare</p>
+
+<h3>Pests:</h3>
+<ul>
+<li>Shoot Borer</li>
+</ul>
+
+<h3>Diseases:</h3>
+<ul>
+<li>Yellow Vein Mosaic</li>
+</ul>
+
+<h3>Pesticides:</h3>
+<ul>
+<li>Imidacloprid</li>
+</ul>
+`,
+
+hi:`
+<h2>🌿 भिंडी</h2>
+<p><b>मिट्टी:</b> अच्छी जल निकासी वाली दोमट मिट्टी</p>
+<p><b>जलवायु:</b> 25–35°C</p>
+<p><b>पानी:</b> हर 4–6 दिन</p>
+<p><b>कटाई:</b> 50–60 दिन</p>
+<p><b>उपज:</b> 10–15 टन/हेक्टेयर</p>
+
+<h3>कीट:</h3>
+<ul>
+<li>शूट बोरर</li>
+</ul>
+
+<h3>रोग:</h3>
+<ul>
+<li>येलो वेन मोज़ेक</li>
+</ul>
+
+<h3>कीटनाशक:</h3>
+<ul>
+<li>इमिडाक्लोप्रिड</li>
+</ul>
+`,
+
+te:`
+<h2>🌿 బెండకాయ</h2>
+<p><b>మట్టి:</b> బాగా డ్రెయిన్ అయ్యే లోమీ నేల</p>
+<p><b>వాతావరణం:</b> 25–35°C</p>
+<p><b>నీరు:</b> ప్రతి 4–6 రోజుల్లో</p>
+<p><b>కత్తిరింపు:</b> 50–60 రోజులు</p>
+<p><b>ఉత్పత్తి:</b> 10–15 టన్నులు/హెక్టారు</p>
+
+<h3>పురుగులు:</h3>
+<ul>
+<li>షూట్ బోరర్</li>
+</ul>
+
+<h3>వ్యాధులు:</h3>
+<ul>
+<li>యెలో వెయిన్ మోజేక్</li>
+</ul>
+
+<h3>పురుగుమందులు:</h3>
+<ul>
+<li>ఇమిడాక్లోప్రిడ్</li>
+</ul>
+`
+},
+cauliflower: {
+
+en:`
+<h2>🥦 Cauliflower</h2>
+<p><b>Soil:</b> Fertile loam</p>
+<p><b>Climate:</b> 15–20°C</p>
+<p><b>Water:</b> Regular irrigation</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Yield:</b> 20–25 tons/hectare</p>
+
+<h3>Pests:</h3>
+<ul>
+<li>Diamondback Moth</li>
+</ul>
+
+<h3>Diseases:</h3>
+<ul>
+<li>Black Rot</li>
+</ul>
+
+<h3>Pesticides:</h3>
+<ul>
+<li>Spinosad</li>
+</ul>
+`,
+
+hi:`
+<h2>🥦 फूलगोभी</h2>
+<p><b>मिट्टी:</b> उपजाऊ दोमट मिट्टी</p>
+<p><b>जलवायु:</b> 15–20°C</p>
+<p><b>पानी:</b> नियमित सिंचाई</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>उपज:</b> 20–25 टन/हेक्टेयर</p>
+
+<h3>कीट:</h3>
+<ul>
+<li>डायमंडबैक माउस</li>
+</ul>
+
+<h3>रोग:</h3>
+<ul>
+<li>ब्लैक रॉट</li>
+</ul>
+
+<h3>कीटनाशक:</h3>
+<ul>
+<li>स्पिनोसैड</li>
+</ul>
+`,
+
+te:`
+<h2>🥦 కాలీఫ్లవర్</h2>
+<p><b>మట్టి:</b> పర్యాప్తి లోమీ నేల</p>
+<p><b>వాతావరణం:</b> 15–20°C</p>
+<p><b>నీరు:</b> నియమిత సేంద్రియ రసాయనాలతో సస్యజలనం</p>
+<p><b>కత్తిరింపు:</b> 90–120 రోజులు</p>
+<p><b>ఉత్పత్తి:</b> 20–25 టన్నులు/హెక్టారు</p>
+
+<h3>పురుగులు:</h3>
+<ul>
+<li>డైమండ్ బ్యాక్ మోత్</li>
+</ul>
+
+<h3>వ్యాధులు:</h3>
+<ul>
+<li>బ్లాక్ రోట్</li>
+</ul>
+
+<h3>పురుగుమందులు:</h3>
+<ul>
+<li>స్పినోసాడ్</li>
+</ul>
+`
+},
+spinach: {
+
+en:`
+<h2>🥬 Spinach</h2>
+<p><b>Soil:</b> Sandy loam</p>
+<p><b>Climate:</b> 10–25°C</p>
+<p><b>Water:</b> Light frequent irrigation</p>
+<p><b>Harvest:</b> 30–45 days</p>
+<p><b>Yield:</b> 8–10 tons/hectare</p>
+
+<h3>Pests:</h3>
+<ul>
+<li>Aphids</li>
+</ul>
+
+<h3>Diseases:</h3>
+<ul>
+<li>Downy Mildew</li>
+</ul>
+
+<h3>Pesticides:</h3>
+<ul>
+<li>Mancozeb</li>
+</ul>
+`,
+
+hi:`
+<h2>🥬 पालक</h2>
+<p><b>मिट्टी:</b> दोमट/रेतीली मिट्टी</p>
+<p><b>जलवायु:</b> 10–25°C</p>
+<p><b>पानी:</b> हल्की और बार-बार सिंचाई</p>
+<p><b>कटाई:</b> 30–45 दिन</p>
+<p><b>उपज:</b> 8–10 टन/हेक्टेयर</p>
+
+<h3>कीट:</h3>
+<ul>
+<li>एपिड्स</li>
+</ul>
+
+<h3>रोग:</h3>
+<ul>
+<li>डाउन मील्ड्यू</li>
+</ul>
+
+<h3>कीटनाशक:</h3>
+<ul>
+<li>मैंकोजेब</li>
+</ul>
+`,
+
+te:`
+<h2>🥬 పాలకూర</h2>
+<p><b>మట్టి:</b> బలమైన sandy loam</p>
+<p><b>వాతావరణం:</b> 10–25°C</p>
+<p><b>నీరు:</b> తేలికపాటి, తరచుగా నీటిపోసడం</p>
+<p><b>కత్తిరింపు:</b> 30–45 రోజులు</p>
+<p><b>ఉత్పత్తి:</b> 8–10 టన్నులు/హెక్టారు</p>
+
+<h3>పురుగులు:</h3>
+<ul>
+<li>ఆఫిడ్స్</li>
+</ul>
+
+<h3>వ్యాధులు:</h3>
+<ul>
+<li>డౌని మిల్డ్యూ</li>
+</ul>
+
+<h3>పురుగుమందులు:</h3>
+<ul>
+<li>మాంకోజెబ్</li>
+</ul>
+`
+},
+cucumber: {
+
+en:`
+<h2>🥒 Cucumber</h2>
+<p><b>Soil:</b> Sandy loam</p>
+<p><b>Climate:</b> 20–30°C</p>
+<p><b>Water:</b> Every 3–4 days</p>
+<p><b>Harvest:</b> 45–60 days</p>
+<p><b>Yield:</b> 15–20 tons/hectare</p>
+
+<h3>Pests:</h3>
+<ul>
+<li>Fruit Fly</li>
+</ul>
+
+<h3>Diseases:</h3>
+<ul>
+<li>Powdery Mildew</li>
+</ul>
+
+<h3>Pesticides:</h3>
+<ul>
+<li>Sulphur</li>
+</ul>
+`,
+
+hi:`
+<h2>🥒 खीरा</h2>
+<p><b>मिट्टी:</b> दोमट/रेतीली मिट्टी</p>
+<p><b>जलवायु:</b> 20–30°C</p>
+<p><b>पानी:</b> हर 3–4 दिन</p>
+<p><b>कटाई:</b> 45–60 दिन</p>
+<p><b>उपज:</b> 15–20 टन/हेक्टेयर</p>
+
+<h3>कीट:</h3>
+<ul>
+<li>फल मक्खी</li>
+</ul>
+
+<h3>रोग:</h3>
+<ul>
+<li>पाउडरी मील्ड्यू</li>
+</ul>
+
+<h3>कीटनाशक:</h3>
+<ul>
+<li>गंधक (Sulphur)</li>
+</ul>
+`,
+
+te:`
+<h2>🥒 దోసకాయ</h2>
+<p><b>మట్టి:</b> Sandy loam</p>
+<p><b>వాతావరణం:</b> 20–30°C</p>
+<p><b>నీరు:</b> ప్రతి 3–4 రోజులకు</p>
+<p><b>కత్తిరింపు:</b> 45–60 రోజులు</p>
+<p><b>ఉత్పత్తి:</b> 15–20 టన్నులు/హెక్టారు</p>
+
+<h3>పురుగులు:</h3>
+<ul>
+<li>పండు పల్లి (Fruit Fly)</li>
+</ul>
+
+<h3>వ్యాధులు:</h3>
+<ul>
+<li>పౌడరీ మిల్డ్యూ</li>
+</ul>
+
+<h3>పురుగుమందులు:</h3>
+<ul>
+<li>సల్ఫర్ (Sulphur)</li>
+</ul>
+`
+},
+
+
+
+};
+
+
+function changeLanguage(lang) {
+  currentLang = lang;
+
+  document.querySelectorAll("h4").forEach(el => {
+    el.innerText = el.dataset[lang];
+  });
+
+  if (lang === "hi") {
+    document.getElementById("mainTitle").innerText = "🌾 सब्जियाँ और फसलें";
+    document.getElementById("subTitle").innerText = "पूर्ण कृषि जानकारी";
+    document.getElementById("backBtn").innerText = "⬅ वापस";
+  } else if (lang === "te") {
+    document.getElementById("mainTitle").innerText = "🌾 కూరగాయలు మరియు పంటలు";
+    document.getElementById("subTitle").innerText = "పూర్తి వ్యవసాయ సమాచారం";
+    document.getElementById("backBtn").innerText = "⬅ వెనక్కి";
+  } else {
+    document.getElementById("mainTitle").innerText = "🌾 Vegetables & Field Crops";
+    document.getElementById("subTitle").innerText = "Complete agricultural information";
+    document.getElementById("backBtn").innerText = "⬅ Back";
+  }
+
+  const infoBox = document.getElementById("cropInfo");
+  if (infoBox.style.display === "block" && infoBox.dataset.crop) {
+    const crop = infoBox.dataset.crop;
+    infoBox.innerHTML = crops[crop][currentLang];
+  }
+}
+
+function showCrop(crop) {
+    selectedCrop = crop;
+
+    const infoBox = document.getElementById("cropInfo");
+    infoBox.innerHTML = crops[crop][currentLang];
+    infoBox.style.display = "block";
+}
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem("language", lang);
+
+    updateStaticText();
+
+    // Update open crop
+    if (selectedCrop) {
+        showCrop(selectedCrop);
+    }
+}
+
+
+</script>
+
+</body>
+</html>

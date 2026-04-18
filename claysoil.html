@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Clay Soil Crops</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f9ff;
+  margin: 0;
+}
+
+header {
+    background-color: #8b5a2b;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.info-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+button {
+  padding: 10px 15px;
+  background: #8b5a2b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1 id="mainTitle">🌾 Vegetables & Field Crops</h1>
+<p id="subTitle">Crops suitable for fertile river plains</p>
+</header>
+
+<div class="container">
+
+<div id="cropInfo" class="info-box"></div>
+
+<div class="cards">
+    <div class="card" onclick="showCrop('rice')">
+<div class="emoji">🌾</div>
+<h4 data-en="Rice" data-hi="चावल" data-te="వరి">Rice</h4>
+</div>
+<div class="card" onclick="showCrop('sugarcane')">
+<div class="emoji">🎋</div>
+<h4 data-en="Sugarcane" data-hi="गन्ना" data-te="చెరకు">Sugarcane</h4>
+</div>
+<div class="card" onclick="showCrop('wheat')">
+<div class="emoji">🌾</div>
+<h4 data-en="Wheat" data-hi="गेहूं" data-te="గోధుమ">Wheat</h4>
+</div>
+<div class="card" onclick="showCrop('cotton')">
+<div class="emoji">☁️</div>
+<h4 data-en="Cotton" data-hi="कपास" data-te="పత్తి">Cotton</h4>
+</div>
+<div class="card" onclick="showCrop('soybean')">
+<div class="emoji">🌱</div>
+<h4 data-en="Soybean" data-hi="सोयाबीन" data-te="సోయాబీన్">Soybean</h4>
+</div>
+<div class="card" onclick="showCrop('chickpea')">
+<div class="emoji">🌿</div>
+<h4 data-en="Chickpea" data-hi="चना" data-te="సెనగ">Chickpea</h4>
+</div>
+<div class="card" onclick="showCrop('lentil')">
+<div class="emoji">🌱</div>
+<h4 data-en="Lentil" data-hi="मसूर" data-te="మసూర్ పప్పు">Lentil</h4>
+</div>
+<div class="card" onclick="showCrop('pea')">
+<div class="emoji">🟢</div>
+<h4 data-en="Pea" data-hi="मटर" data-te="బటాణి">Pea</h4>
+</div>
+<div class="card" onclick="showCrop('cauliflower')">
+<div class="emoji">🥦</div>
+<h4 data-en="Cauliflower" data-hi="फूलगोभी" data-te="కాలీఫ్లవర్">Cauliflower</h4>
+</div>
+<div class="card" onclick="showCrop('cabbage')">
+<div class="emoji">🥬</div>
+<h4 data-en="Cabbage" data-hi="पत्ता गोभी" data-te="క్యాబేజీ">Cabbage</h4>
+</div>
+<div class="card" onclick="showCrop('broccoli')">
+<div class="emoji">🥦</div>
+<h4 data-en="Broccoli" data-hi="ब्रोकोली" data-te="బ్రోకోలీ">Broccoli</h4>
+</div>
+<div class="card" onclick="showCrop('brussels_sprouts')">
+<div class="emoji">🌱</div>
+<h4 data-en="Brussels Sprouts" data-hi="ब्रसेल्स स्प्राउट्स" data-te="బ్రస్సెల్స్ స్ప్రౌట్స్">Brussels Sprouts</h4>
+</div>
+<div class="card" onclick="showCrop('pear')">
+<div class="emoji">🍐</div>
+<h4 data-en="Pear" data-hi="नाशपाती" data-te="పియర్">Pear</h4>
+</div>
+<div class="card" onclick="showCrop('apple')">
+<div class="emoji">🍎</div>
+<h4 data-en="Apple" data-hi="सेब" data-te="ఆపిల్">Apple</h4>
+</div>
+
+<div class="card" onclick="showCrop('maize')">
+<div class="emoji">🌽</div>
+<h4 data-en="Maize" data-hi="मक्का" data-te="మొక్కజొన్న">Maize</h4>
+</div>
+</div>
+
+</div>
+
+<button onclick="history.back()">⬅ Back</button>
+
+</div>
+
+<script>
+      let currentLang = localStorage.getItem("language") || "en";
+let selectedCrop = null;
+document.querySelectorAll(".card h4").forEach(function (el) {
+    const text = el.getAttribute("data-" + currentLang);
+    if (text) {
+        el.innerText = text;
+    }
+});
+const crops={
+    soybean:{
+
+en:`
+<h2>🌱 Soybean</h2>
+<p><b>Botanical Name:</b> Glycine max</p>
+<p><b>Family:</b> Fabaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Warm and humid climate (20°C – 30°C)</p>
+<p><b>Water Requirement:</b> Moderate rainfall</p>
+<p><b>Sowing Season:</b> June – July</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Seed Rate:</b> 60–75 kg/hectare</p>
+<p><b>Yield:</b> 20–30 quintals/hectare</p>
+<p><b>Uses:</b> Used for oil, soy milk, tofu, and animal feed</p>
+`,
+
+hi:`
+<h2>🌱 सोयाबीन</h2>
+<p><b>वैज्ञानिक नाम:</b> Glycine max</p>
+<p><b>परिवार:</b> Fabaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> गर्म और आर्द्र जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम वर्षा</p>
+<p><b>बुवाई:</b> जून – जुलाई</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>बीज दर:</b> 60–75 किग्रा/हेक्टेयर</p>
+<p><b>उपज:</b> 20–30 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🌱 సోయాబీన్</h2>
+<p><b>శాస్త్రీయ నామం:</b> Glycine max</p>
+<p><b>కుటుంబం:</b> Fabaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> వేడి మరియు తేమ గల వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు వర్షపాతం</p>
+<p><b>విత్తే కాలం:</b> జూన్ – జూలై</p>
+<p><b>పంట కోత:</b> 90–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 60–75 కిలోలు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 20–30 క్వింటాళ్లు</p>
+`
+},
+cotton:{
+
+en:`
+<h2>☁️ Cotton</h2>
+<p><b>Botanical Name:</b> Gossypium</p>
+<p><b>Family:</b> Malvaceae</p>
+<p><b>Soil:</b> Clay or black cotton soil</p>
+<p><b>Soil pH:</b> 6.0 – 8.0</p>
+<p><b>Climate:</b> Warm climate (21°C – 30°C)</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Sowing Season:</b> April – May</p>
+<p><b>Harvest:</b> 150–180 days</p>
+<p><b>Seed Rate:</b> 15–20 kg/hectare</p>
+<p><b>Yield:</b> 15–25 quintals/hectare</p>
+<p><b>Uses:</b> Used for making cotton fiber, textiles, and oil from seeds</p>
+`,
+
+hi:`
+<h2>☁️ कपास</h2>
+<p><b>वैज्ञानिक नाम:</b> Gossypium</p>
+<p><b>परिवार:</b> Malvaceae</p>
+<p><b>मिट्टी:</b> चिकनी या काली कपास मिट्टी</p>
+<p><b>pH:</b> 6.0 – 8.0</p>
+<p><b>जलवायु:</b> गर्म जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>बुवाई:</b> अप्रैल – मई</p>
+<p><b>कटाई:</b> 150–180 दिन</p>
+<p><b>बीज दर:</b> 15–20 किग्रा/हेक्टेयर</p>
+<p><b>उपज:</b> 15–25 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>☁️ పత్తి</h2>
+<p><b>శాస్త్రీయ నామం:</b> Gossypium</p>
+<p><b>కుటుంబం:</b> Malvaceae</p>
+<p><b>నేల:</b> మట్టి లేదా నల్ల పత్తి నేల</p>
+<p><b>pH:</b> 6.0 – 8.0</p>
+<p><b>వాతావరణం:</b> వేడి వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>విత్తే కాలం:</b> ఏప్రిల్ – మే</p>
+<p><b>పంట కోత:</b> 150–180 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 15–20 కిలోలు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 15–25 క్వింటాళ్లు</p>
+`
+},
+brussels_sprouts:{
+
+en:`
+<h2>🌱 Brussels Sprouts</h2>
+<p><b>Botanical Name:</b> Brassica oleracea var. gemmifera</p>
+<p><b>Family:</b> Brassicaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Cool climate (15°C – 20°C)</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Planting Season:</b> September – October</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Seed Rate:</b> 400–500 g/hectare</p>
+<p><b>Yield:</b> 120–180 quintals/hectare</p>
+<p><b>Uses:</b> Used in salads, soups, and healthy vegetable dishes</p>
+`,
+
+hi:`
+<h2>🌱 ब्रसेल्स स्प्राउट्स</h2>
+<p><b>वैज्ञानिक नाम:</b> Brassica oleracea var. gemmifera</p>
+<p><b>परिवार:</b> Brassicaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> ठंडी जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>रोपण:</b> सितंबर – अक्टूबर</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>बीज दर:</b> 400–500 ग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 120–180 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🌱 బ్రస్సెల్స్ స్ప్రౌట్స్</h2>
+<p><b>శాస్త్రీయ నామం:</b> Brassica oleracea var. gemmifera</p>
+<p><b>కుటుంబం:</b> Brassicaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> చల్లని వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>నాటే కాలం:</b> సెప్టెంబర్ – అక్టోబర్</p>
+<p><b>పంట కోత:</b> 90–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 400–500 గ్రాములు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 120–180 క్వింటాళ్లు</p>
+`
+},
+broccoli:{
+
+en:`
+<h2>🥦 Broccoli</h2>
+<p><b>Botanical Name:</b> Brassica oleracea var. italica</p>
+<p><b>Family:</b> Brassicaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Cool climate (18°C – 24°C)</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Planting Season:</b> September – October</p>
+<p><b>Harvest:</b> 80–100 days</p>
+<p><b>Seed Rate:</b> 400–500 g/hectare</p>
+<p><b>Yield:</b> 150–200 quintals/hectare</p>
+<p><b>Uses:</b> Used in salads, soups, stir-fries, and healthy dishes</p>
+`,
+
+hi:`
+<h2>🥦 ब्रोकोली</h2>
+<p><b>वैज्ञानिक नाम:</b> Brassica oleracea var. italica</p>
+<p><b>परिवार:</b> Brassicaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> ठंडी जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>रोपण:</b> सितंबर – अक्टूबर</p>
+<p><b>कटाई:</b> 80–100 दिन</p>
+<p><b>बीज दर:</b> 400–500 ग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 150–200 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🥦 బ్రోకోలీ</h2>
+<p><b>శాస్త్రీయ నామం:</b> Brassica oleracea var. italica</p>
+<p><b>కుటుంబం:</b> Brassicaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> చల్లని వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>నాటే కాలం:</b> సెప్టెంబర్ – అక్టోబర్</p>
+<p><b>పంట కోత:</b> 80–100 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 400–500 గ్రాములు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 150–200 క్వింటాళ్లు</p>
+`
+},
+apple:{
+
+en:`
+<h2>🍎 Apple</h2>
+<p><b>Botanical Name:</b> Malus domestica</p>
+<p><b>Family:</b> Rosaceae</p>
+<p><b>Soil:</b> Clay loam soil</p>
+<p><b>Soil pH:</b> 5.5 – 6.5</p>
+<p><b>Climate:</b> Cool temperate climate</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Planting Season:</b> December – February</p>
+<p><b>Harvest:</b> 3–5 years after planting</p>
+<p><b>Yield:</b> 10–15 tons/hectare</p>
+<p><b>Uses:</b> Eaten fresh, used in juice, desserts, and jams</p>
+`,
+
+hi:`
+<h2>🍎 सेब</h2>
+<p><b>वैज्ञानिक नाम:</b> Malus domestica</p>
+<p><b>परिवार:</b> Rosaceae</p>
+<p><b>मिट्टी:</b> चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 5.5 – 6.5</p>
+<p><b>जलवायु:</b> ठंडी समशीतोष्ण जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>रोपण:</b> दिसंबर – फरवरी</p>
+<p><b>कटाई:</b> 3–5 वर्ष बाद</p>
+<p><b>उपज:</b> 10–15 टन/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🍎 ఆపిల్</h2>
+<p><b>శాస్త్రీయ నామం:</b> Malus domestica</p>
+<p><b>కుటుంబం:</b> Rosaceae</p>
+<p><b>నేల:</b> మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 5.5 – 6.5</p>
+<p><b>వాతావరణం:</b> చల్లని సమశీతోష్ణ వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>నాటే కాలం:</b> డిసెంబర్ – ఫిబ్రవరి</p>
+<p><b>పంట కోత:</b> 3–5 సంవత్సరాల తర్వాత</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 10–15 టన్నులు</p>
+`
+},
+pear:{
+
+en:`
+<h2>🍐 Pear</h2>
+<p><b>Botanical Name:</b> Pyrus communis</p>
+<p><b>Family:</b> Rosaceae</p>
+<p><b>Soil:</b> Clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.0</p>
+<p><b>Climate:</b> Cool temperate climate</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Planting Season:</b> December – February</p>
+<p><b>Harvest:</b> 3–4 years after planting</p>
+<p><b>Yield:</b> 10–20 tons/hectare</p>
+<p><b>Uses:</b> Eaten fresh, used in juices, desserts, and jams</p>
+`,
+
+hi:`
+<h2>🍐 नाशपाती</h2>
+<p><b>वैज्ञानिक नाम:</b> Pyrus communis</p>
+<p><b>परिवार:</b> Rosaceae</p>
+<p><b>मिट्टी:</b> चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.0</p>
+<p><b>जलवायु:</b> ठंडी समशीतोष्ण जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>रोपण:</b> दिसंबर – फरवरी</p>
+<p><b>कटाई:</b> 3–4 वर्ष बाद</p>
+<p><b>उपज:</b> 10–20 टन/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🍐 పియర్</h2>
+<p><b>శాస్త్రీయ నామం:</b> Pyrus communis</p>
+<p><b>కుటుంబం:</b> Rosaceae</p>
+<p><b>నేల:</b> మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.0</p>
+<p><b>వాతావరణం:</b> చల్లని సమశీతోష్ణ వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>నాటే కాలం:</b> డిసెంబర్ – ఫిబ్రవరి</p>
+<p><b>పంట కోత:</b> 3–4 సంవత్సరాల తర్వాత</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 10–20 టన్నులు</p>
+`
+},
+lentil:{
+
+en:`
+<h2>🌱 Lentil</h2>
+<p><b>Botanical Name:</b> Lens culinaris</p>
+<p><b>Family:</b> Fabaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Cool and dry climate (18°C – 25°C)</p>
+<p><b>Water Requirement:</b> Low to moderate</p>
+<p><b>Sowing Season:</b> October – November</p>
+<p><b>Harvest:</b> 100–110 days</p>
+<p><b>Seed Rate:</b> 30–40 kg/hectare</p>
+<p><b>Yield:</b> 10–20 quintals/hectare</p>
+<p><b>Uses:</b> Used for making dal and various nutritious food dishes</p>
+`,
+
+hi:`
+<h2>🌱 मसूर</h2>
+<p><b>वैज्ञानिक नाम:</b> Lens culinaris</p>
+<p><b>परिवार:</b> Fabaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> ठंडी और शुष्क जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> कम से मध्यम</p>
+<p><b>बुवाई:</b> अक्टूबर – नवंबर</p>
+<p><b>कटाई:</b> 100–110 दिन</p>
+<p><b>बीज दर:</b> 30–40 किग्रा/हेक्टेयर</p>
+<p><b>उपज:</b> 10–20 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🌱 మసూర్ పప్పు</h2>
+<p><b>శాస్త్రీయ నామం:</b> Lens culinaris</p>
+<p><b>కుటుంబం:</b> Fabaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> చల్లని మరియు పొడి వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> తక్కువ నుండి మోస్తరు</p>
+<p><b>విత్తే కాలం:</b> అక్టోబర్ – నవంబర్</p>
+<p><b>పంట కోత:</b> 100–110 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 30–40 కిలోలు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 10–20 క్వింటాళ్లు</p>
+`
+},
+maize:{
+
+en:`
+<h2>🌽 Maize</h2>
+<p><b>Botanical Name:</b> Zea mays</p>
+<p><b>Family:</b> Poaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 5.5 – 7.5</p>
+<p><b>Climate:</b> Warm climate (18°C – 27°C)</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Sowing Season:</b> June – July</p>
+<p><b>Harvest:</b> 90–110 days</p>
+<p><b>Seed Rate:</b> 20–25 kg/hectare</p>
+<p><b>Yield:</b> 40–60 quintals/hectare</p>
+<p><b>Uses:</b> Used for food, animal feed, corn flour, and corn oil</p>
+`,
+
+hi:`
+<h2>🌽 मक्का</h2>
+<p><b>वैज्ञानिक नाम:</b> Zea mays</p>
+<p><b>परिवार:</b> Poaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 5.5 – 7.5</p>
+<p><b>जलवायु:</b> गर्म जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>बुवाई:</b> जून – जुलाई</p>
+<p><b>कटाई:</b> 90–110 दिन</p>
+<p><b>बीज दर:</b> 20–25 किग्रा/हेक्टेयर</p>
+<p><b>उपज:</b> 40–60 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🌽 మొక్కజొన్న</h2>
+<p><b>శాస్త్రీయ నామం:</b> Zea mays</p>
+<p><b>కుటుంబం:</b> Poaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 5.5 – 7.5</p>
+<p><b>వాతావరణం:</b> వేడి వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>విత్తే కాలం:</b> జూన్ – జూలై</p>
+<p><b>పంట కోత:</b> 90–110 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 20–25 కిలోలు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 40–60 క్వింటాళ్లు</p>
+`
+},
+pea:{
+
+en:`
+<h2>🟢 Pea</h2>
+<p><b>Botanical Name:</b> Pisum sativum</p>
+<p><b>Family:</b> Fabaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Cool climate (13°C – 18°C)</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Sowing Season:</b> October – November</p>
+<p><b>Harvest:</b> 60–70 days</p>
+<p><b>Seed Rate:</b> 70–80 kg/hectare</p>
+<p><b>Yield:</b> 20–30 quintals/hectare</p>
+<p><b>Uses:</b> Used as vegetable and in soups, curries, and salads</p>
+`,
+
+hi:`
+<h2>🟢 मटर</h2>
+<p><b>वैज्ञानिक नाम:</b> Pisum sativum</p>
+<p><b>परिवार:</b> Fabaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> ठंडी जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>बुवाई:</b> अक्टूबर – नवंबर</p>
+<p><b>कटाई:</b> 60–70 दिन</p>
+<p><b>बीज दर:</b> 70–80 किग्रा/हेक्टेयर</p>
+<p><b>उपज:</b> 20–30 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🟢 బటాణి</h2>
+<p><b>శాస్త్రీయ నామం:</b> Pisum sativum</p>
+<p><b>కుటుంబం:</b> Fabaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> చల్లని వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>విత్తే కాలం:</b> అక్టోబర్ – నవంబర్</p>
+<p><b>పంట కోత:</b> 60–70 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 70–80 కిలోలు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 20–30 క్వింటాళ్లు</p>
+`
+},
+
+chickpea:{
+
+en:`
+<h2>🌿 Chickpea</h2>
+<p><b>Botanical Name:</b> Cicer arietinum</p>
+<p><b>Family:</b> Fabaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Cool and dry climate (20°C – 25°C)</p>
+<p><b>Water Requirement:</b> Low to moderate</p>
+<p><b>Sowing Season:</b> October – November</p>
+<p><b>Harvest:</b> 100–120 days</p>
+<p><b>Seed Rate:</b> 60–80 kg/hectare</p>
+<p><b>Yield:</b> 15–25 quintals/hectare</p>
+<p><b>Uses:</b> Used for making dal, flour (besan), and many food dishes</p>
+`,
+
+hi:`
+<h2>🌿 चना</h2>
+<p><b>वैज्ञानिक नाम:</b> Cicer arietinum</p>
+<p><b>परिवार:</b> Fabaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> ठंडी और शुष्क जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> कम से मध्यम</p>
+<p><b>बुवाई:</b> अक्टूबर – नवंबर</p>
+<p><b>कटाई:</b> 100–120 दिन</p>
+<p><b>बीज दर:</b> 60–80 किग्रा/हेक्टेयर</p>
+<p><b>उपज:</b> 15–25 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🌿 సెనగ</h2>
+<p><b>శాస్త్రీయ నామం:</b> Cicer arietinum</p>
+<p><b>కుటుంబం:</b> Fabaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> చల్లని మరియు పొడి వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> తక్కువ నుండి మోస్తరు</p>
+<p><b>విత్తే కాలం:</b> అక్టోబర్ – నవంబర్</p>
+<p><b>పంట కోత:</b> 100–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 60–80 కిలోలు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 15–25 క్వింటాళ్లు</p>
+`
+},
+
+    rice:{
+
+en:`
+<h2>🌾 Rice</h2>
+<p><b>Botanical Name:</b> Oryza sativa</p>
+<p><b>Family:</b> Poaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 5.5 – 7.0</p>
+<p><b>Climate:</b> Warm and humid climate (20°C – 35°C)</p>
+<p><b>Water Requirement:</b> High (needs standing water)</p>
+<p><b>Sowing Season:</b> June – July (Kharif)</p>
+<p><b>Harvest:</b> 120–150 days</p>
+<p><b>Seed Rate:</b> 30–40 kg/hectare</p>
+<p><b>Yield:</b> 40–60 quintals/hectare</p>
+<p><b>Uses:</b> Staple food grain consumed worldwide</p>
+`,
+
+hi:`
+<h2>🌾 चावल</h2>
+<p><b>वैज्ञानिक नाम:</b> Oryza sativa</p>
+<p><b>परिवार:</b> Poaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 5.5 – 7.0</p>
+<p><b>जलवायु:</b> गर्म और आर्द्र जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> अधिक</p>
+<p><b>बुवाई:</b> जून – जुलाई</p>
+<p><b>कटाई:</b> 120–150 दिन</p>
+<p><b>बीज दर:</b> 30–40 किग्रा/हेक्टेयर</p>
+<p><b>उपज:</b> 40–60 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🌾 వరి</h2>
+<p><b>శాస్త్రీయ నామం:</b> Oryza sativa</p>
+<p><b>కుటుంబం:</b> Poaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 5.5 – 7.0</p>
+<p><b>వాతావరణం:</b> వేడి మరియు తేమగల వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> ఎక్కువ (నీరు నిల్వ ఉండాలి)</p>
+<p><b>విత్తే కాలం:</b> జూన్ – జూలై</p>
+<p><b>పంట కోత:</b> 120–150 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 30–40 కిలోలు/హెక్టారు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 40–60 క్వింటాళ్లు</p>
+`
+},
+wheat:{
+
+en:`
+<h2>🌾 Wheat</h2>
+<p><b>Botanical Name:</b> Triticum aestivum</p>
+<p><b>Family:</b> Poaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Cool and dry climate (10°C – 25°C)</p>
+<p><b>Water Requirement:</b> Moderate irrigation</p>
+<p><b>Sowing Season:</b> October – November</p>
+<p><b>Harvest:</b> 120–140 days</p>
+<p><b>Seed Rate:</b> 100–120 kg/hectare</p>
+<p><b>Yield:</b> 30–50 quintals/hectare</p>
+<p><b>Uses:</b> Used to make flour, bread, chapati, and other food products</p>
+`,
+
+hi:`
+<h2>🌾 गेहूं</h2>
+<p><b>वैज्ञानिक नाम:</b> Triticum aestivum</p>
+<p><b>परिवार:</b> Poaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> ठंडी और शुष्क जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम सिंचाई</p>
+<p><b>बुवाई:</b> अक्टूबर – नवंबर</p>
+<p><b>कटाई:</b> 120–140 दिन</p>
+<p><b>बीज दर:</b> 100–120 किग्रा/हेक्टेयर</p>
+<p><b>उपज:</b> 30–50 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🌾 గోధుమ</h2>
+<p><b>శాస్త్రీయ నామం:</b> Triticum aestivum</p>
+<p><b>కుటుంబం:</b> Poaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> చల్లని మరియు పొడి వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు నీటిపారుదల</p>
+<p><b>విత్తే కాలం:</b> అక్టోబర్ – నవంబర్</p>
+<p><b>పంట కోత:</b> 120–140 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> 100–120 కిలోలు/హెక్టారు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 30–50 క్వింటాళ్లు</p>
+`
+},
+cabbage:{
+
+en:`
+<h2>🥬 Cabbage</h2>
+<p><b>Botanical Name:</b> Brassica oleracea</p>
+<p><b>Family:</b> Brassicaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Cool climate (15°C – 20°C)</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Planting Season:</b> September – October</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Seed Rate:</b> 500–700 g/hectare</p>
+<p><b>Yield:</b> 200–300 quintals/hectare</p>
+<p><b>Uses:</b> Used in salads, curries, soups, and healthy dishes</p>
+`,
+
+hi:`
+<h2>🥬 पत्ता गोभी</h2>
+<p><b>वैज्ञानिक नाम:</b> Brassica oleracea</p>
+<p><b>परिवार:</b> Brassicaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> ठंडी जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>रोपण:</b> सितंबर – अक्टूबर</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>बीज दर:</b> 500–700 ग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 200–300 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🥬 క్యాబేజీ</h2>
+<p><b>శాస్త్రీయ నామం:</b> Brassica oleracea</p>
+<p><b>కుటుంబం:</b> Brassicaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> చల్లని వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>నాటే కాలం:</b> సెప్టెంబర్ – అక్టోబర్</p>
+<p><b>పంట కోత:</b> 90–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 500–700 గ్రాములు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 200–300 క్వింటాళ్లు</p>
+`
+},
+cauliflower:{
+
+en:`
+<h2>🥦 Cauliflower</h2>
+<p><b>Botanical Name:</b> Brassica oleracea var. botrytis</p>
+<p><b>Family:</b> Brassicaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.0 – 7.5</p>
+<p><b>Climate:</b> Cool climate (15°C – 20°C)</p>
+<p><b>Water Requirement:</b> Moderate</p>
+<p><b>Planting Season:</b> September – October</p>
+<p><b>Harvest:</b> 90–120 days</p>
+<p><b>Seed Rate:</b> 500–600 g/hectare</p>
+<p><b>Yield:</b> 180–250 quintals/hectare</p>
+<p><b>Uses:</b> Used in curries, soups, fried dishes, and healthy meals</p>
+`,
+
+hi:`
+<h2>🥦 फूलगोभी</h2>
+<p><b>वैज्ञानिक नाम:</b> Brassica oleracea var. botrytis</p>
+<p><b>परिवार:</b> Brassicaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>जलवायु:</b> ठंडी जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> मध्यम</p>
+<p><b>रोपण:</b> सितंबर – अक्टूबर</p>
+<p><b>कटाई:</b> 90–120 दिन</p>
+<p><b>बीज दर:</b> 500–600 ग्राम/हेक्टेयर</p>
+<p><b>उपज:</b> 180–250 क्विंटल/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🥦 కాలీఫ్లవర్</h2>
+<p><b>శాస్త్రీయ నామం:</b> Brassica oleracea var. botrytis</p>
+<p><b>కుటుంబం:</b> Brassicaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.0 – 7.5</p>
+<p><b>వాతావరణం:</b> చల్లని వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> మోస్తరు</p>
+<p><b>నాటే కాలం:</b> సెప్టెంబర్ – అక్టోబర్</p>
+<p><b>పంట కోత:</b> 90–120 రోజులు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 500–600 గ్రాములు</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 180–250 క్వింటాళ్లు</p>
+`
+},
+sugarcane:{
+
+en:`
+<h2>🎋 Sugarcane</h2>
+<p><b>Botanical Name:</b> Saccharum officinarum</p>
+<p><b>Family:</b> Poaceae</p>
+<p><b>Soil:</b> Clay or clay loam soil</p>
+<p><b>Soil pH:</b> 6.5 – 7.5</p>
+<p><b>Climate:</b> Warm tropical climate (20°C – 35°C)</p>
+<p><b>Water Requirement:</b> High</p>
+<p><b>Planting Season:</b> February – March or September – October</p>
+<p><b>Harvest:</b> 10–18 months</p>
+<p><b>Seed Rate:</b> 35,000–40,000 setts/hectare</p>
+<p><b>Yield:</b> 60–100 tons/hectare</p>
+<p><b>Uses:</b> Sugar production, jaggery, ethanol and juice</p>
+`,
+
+hi:`
+<h2>🎋 गन्ना</h2>
+<p><b>वैज्ञानिक नाम:</b> Saccharum officinarum</p>
+<p><b>परिवार:</b> Poaceae</p>
+<p><b>मिट्टी:</b> चिकनी या चिकनी दोमट मिट्टी</p>
+<p><b>pH:</b> 6.5 – 7.5</p>
+<p><b>जलवायु:</b> गर्म उष्णकटिबंधीय जलवायु</p>
+<p><b>पानी की आवश्यकता:</b> अधिक</p>
+<p><b>रोपण:</b> फरवरी – मार्च या सितंबर – अक्टूबर</p>
+<p><b>कटाई:</b> 10–18 महीने</p>
+<p><b>बीज दर:</b> 35,000–40,000 सेट्स/हेक्टेयर</p>
+<p><b>उपज:</b> 60–100 टन/हेक्टेयर</p>
+`,
+
+te:`
+<h2>🎋 చెరకు</h2>
+<p><b>శాస్త్రీయ నామం:</b> Saccharum officinarum</p>
+<p><b>కుటుంబం:</b> Poaceae</p>
+<p><b>నేల:</b> మట్టి లేదా మట్టి లోమీ నేల</p>
+<p><b>pH:</b> 6.5 – 7.5</p>
+<p><b>వాతావరణం:</b> వేడి ఉష్ణమండల వాతావరణం</p>
+<p><b>నీటి అవసరం:</b> ఎక్కువ</p>
+<p><b>నాటే కాలం:</b> ఫిబ్రవరి – మార్చి లేదా సెప్టెంబర్ – అక్టోబర్</p>
+<p><b>పంట కోత:</b> 10–18 నెలలు</p>
+<p><b>విత్తన పరిమాణం:</b> హెక్టారుకు 35,000–40,000 సెట్స్</p>
+<p><b>దిగుబడి:</b> హెక్టారుకు 60–100 టన్నులు</p>
+`
+},
+    };
+
+function changeLanguage(lang) {
+  currentLang = lang;
+
+  document.querySelectorAll("h4").forEach(el => {
+    el.innerText = el.dataset[lang];
+  });
+
+  if (lang === "hi") {
+    document.getElementById("mainTitle").innerText = "🌾 सब्जियाँ और फसलें";
+    document.getElementById("subTitle").innerText = "पूर्ण कृषि जानकारी";
+    document.getElementById("backBtn").innerText = "⬅ वापस";
+  } else if (lang === "te") {
+    document.getElementById("mainTitle").innerText = "🌾 కూరగాయలు మరియు పంటలు";
+    document.getElementById("subTitle").innerText = "పూర్తి వ్యవసాయ సమాచారం";
+    document.getElementById("backBtn").innerText = "⬅ వెనక్కి";
+  } else {
+    document.getElementById("mainTitle").innerText = "🌾 Vegetables & Field Crops";
+    document.getElementById("subTitle").innerText = "Complete agricultural information";
+    document.getElementById("backBtn").innerText = "⬅ Back";
+  }
+
+  const infoBox = document.getElementById("cropInfo");
+  if (infoBox.style.display === "block" && infoBox.dataset.crop) {
+    const crop = infoBox.dataset.crop;
+    infoBox.innerHTML = crops[crop][currentLang];
+  }
+}
+
+function showCrop(crop) {
+    selectedCrop = crop;
+
+    const infoBox = document.getElementById("cropInfo");
+    infoBox.innerHTML = crops[crop][currentLang];
+    infoBox.style.display = "block";
+}
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem("language", lang);
+
+    updateStaticText();
+
+    // Update open crop
+    if (selectedCrop) {
+        showCrop(selectedCrop);
+    }
+}
+
+</script>
+
+</body>
+</html>

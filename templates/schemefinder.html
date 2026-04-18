@@ -1,0 +1,21 @@
+<div id="results"></div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("schemeData"));
+
+if(data){
+    let html = "<h2>Eligible Schemes</h2>";
+
+    data.eligible.forEach(s => {
+        html += `<p>✅ ${s.scheme_name} - ${s.reason}</p>`;
+    });
+
+    html += "<h2>Not Eligible</h2>";
+
+    data.not_eligible.forEach(s => {
+        html += `<p>❌ ${s.scheme_name} - ${s.reason}</p>`;
+    });
+
+    document.getElementById("results").innerHTML = html;
+}
+</script>

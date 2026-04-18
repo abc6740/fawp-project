@@ -1,0 +1,112 @@
+/* ===== GLOBAL STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f9f4;
+  color: #333;
+}
+
+/* ===== HEADER ===== */
+header {
+  background-color: #2e7d32;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  background-color: #1b5e20;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: white;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== SECTION STYLES ===== */
+section {
+  padding: 40px 20px;
+}
+
+h2 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
+
+/* ===== CARDS (ONLY ANIMATED PART) ===== */
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  opacity: 0;
+  animation: cardPop 0.8s ease forwards;
+}
+
+/* Card animation delays */
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+.card:nth-child(4) { animation-delay: 0.8s; }
+.card:nth-child(5) { animation-delay: 1s; }
+
+/* Card animation */
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: #1b5e20;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
