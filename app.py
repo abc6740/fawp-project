@@ -4,12 +4,14 @@ import sqlite3
 import os
 
 # ──────────────────────────────────────────────
-# App setup (ONLY ONCE)
+# App setup
 # ──────────────────────────────────────────────
 app = Flask(__name__)
 CORS(app)
 
-# ✅ Root route (ADD HERE)
+# ──────────────────────────────────────────────
+# Root route
+# ──────────────────────────────────────────────
 @app.route("/")
 def home():
     return jsonify({
@@ -21,6 +23,51 @@ def home():
 # Database setup
 # ──────────────────────────────────────────────
 DB_PATH = os.path.join(os.path.dirname(__file__), "fawp.db")
+
+
+def init_db():
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.execute("""
+        CREATE TABLE IF NOT EXISTS farmers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            village TEXT,
+            state TEXT,
+            land_acres REAL,
+            annual_income REAL,
+            age INTEGER,
+            category TEXT,
+            irrigated INTEGER,
+            bpl INTEGER,
+            has_loan INTEGER
+        )
+        """)
+
+        conn.execute("""
+        CREATE TABLE IF NOT EXISTS farmer_crops (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            farmer_id INTEGER,
+            crop TEXT
+        )
+        """)
+
+        conn.execute("""
+        CREATE TABLE IF NOT EXISTS schemes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            scheme_id TEXT,
+            category TEXT,
+            level TEXT,
+            eligible_categories TEXT,
+            eligible_states TEXT,
+            irrigated_required INTEGER,
+            max_land REAL,
+            min_land REAL,
+            bpl_only INTEGER
+        )
+        """)
+
+# create DB automatically
+init_db()
 
 
 def get_db():
@@ -154,7 +201,7 @@ def delete_farmer(fid):
 
 
 # ──────────────────────────────────────────────
-# SCHEMES
+# SCHEMES API
 # ──────────────────────────────────────────────
 
 @app.route("/api/schemes", methods=["GET"])
@@ -181,38 +228,6 @@ def list_schemes():
         r["irrigated_required"] = None if r["irrigated_required"] is None else bool(r["irrigated_required"])
 
     return jsonify(rows)
-
-
-# ──────────────────────────────────────────────
-# MATCHING ENGINE
-# ──────────────────────────────────────────────
-
-def is_eligible(farmer, scheme):
-    cats = scheme["eligible_categories"]
-    if cats and farmer["category"] not in cats:
-        return False, "Category not eligible"
-
-    states = scheme["eligible_states"]
-    if states and farmer["state"] not in states:
-        return False, "State not eligible"
-
-    if scheme["max_land"] and farmer["land_acres"] > scheme["max_land"]:
-        return False, "Land exceeds limit"
-
-    if scheme["min_land"] and farmer["land_acres"] < scheme["min_land"]:
-        return False, "Land below minimum"
-
-    if scheme["bpl_only"] and not farmer["bpl"]:
-        return False, "BPL required"
-
-    irr = scheme["irrigated_required"]
-    if irr is True and not farmer["irrigated"]:
-        return False, "Irrigation required"
-
-    if irr is False and farmer["irrigated"]:
-        return False, "Must be non-irrigated"
-
-    return True, "Eligible"
 
 
 # ──────────────────────────────────────────────
